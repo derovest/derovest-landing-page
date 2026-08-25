@@ -345,6 +345,7 @@ select{appearance:none; background-image:linear-gradient(45deg,transparent 50%,c
   color:var(--ink)}
 .form-actions{display:flex; flex-wrap:wrap; gap:10px; align-items:center}
 .form-note{font-size:12.5px; color:var(--ink-3); font-family:"JetBrains Mono",monospace; letter-spacing:.02em}
+.form-note a{color:var(--accent); text-decoration:underline; text-underline-offset:2px}
 
 /* ── footer ───────────────────────────────────────────────── */
 footer{border-top:1px solid var(--line); background:var(--surface)}
@@ -818,9 +819,39 @@ form.addEventListener("submit", (e) => {
 document.getElementById("send-mail").addEventListener("click", () => {
   const b = brief();
   if (!b) return;
-  location.href = "mailto:" + EMAIL +
-    "?subject=" + encodeURIComponent(b.need + " — " + b.name) +
-    "&body=" + encodeURIComponent(b.body);
+  const subject = b.need + " — " + b.name;
+  const query = "subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(b.body);
+
+  /* an anchor click hands the mailto to the OS without navigating this page away.
+     assigning location.href does nothing at all when no mail app is registered. */
+  const link = document.createElement("a");
+  link.href = "mailto:" + EMAIL + "?" + query;
+  link.style.display = "none";
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+
+  /* whether or not a mail app answered, leave a way through */
+  const gmail = document.createElement("a");
+  gmail.href = "https://mail.google.com/mail/?view=cm&fs=1&to=" + encodeURIComponent(EMAIL) + "&" +
+    "su=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(b.body);
+  gmail.target = "_blank"; gmail.rel = "noopener noreferrer";
+  gmail.textContent = "write it in Gmail";
+
+  const copy = document.createElement("a");
+  copy.href = "#"; copy.textContent = "copy the message";
+  copy.addEventListener("click", async (e) => {
+    e.preventDefault();
+    try {
+      await navigator.clipboard.writeText("To: " + EMAIL + "\nSubject: " + subject + "\n\n" + b.body);
+      note.textContent = "Copied — paste it into an email to " + EMAIL + ".";
+    } catch (err) {
+      note.textContent = "Copy didn't work here. Our address is " + EMAIL + ".";
+    }
+  });
+
+  note.textContent = "No mail app? ";
+  note.append(gmail, " or ", copy, " — we're at " + EMAIL + ".");
 });
 
 /* hero diff types itself in, once */
