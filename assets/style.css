@@ -62,11 +62,17 @@ img,svg{max-width:100%}
 }
 
 /* ── nav ──────────────────────────────────────────────────── */
+/* Fixed rather than sticky: the bar shrinks as you scroll, and a sticky bar
+   is in normal flow, so shrinking it would drag the whole page up by 12px.
+   body carries matching top padding, so the layout is unchanged. */
 .nav{
-  position:sticky; top:0; z-index:60;
+  position:fixed; top:0; left:0; right:0; z-index:60;
   background:color-mix(in srgb, var(--ground) 88%, transparent);
   backdrop-filter:blur(14px); border-bottom:1px solid var(--line);
 }
+body{padding-top:66px}
+/* hash links land below the bar instead of behind it */
+html{scroll-padding-top:80px}
 .nav-in{display:flex; align-items:center; gap:22px; height:66px}
 .brand{display:flex; align-items:baseline; gap:9px; text-decoration:none; margin-right:auto}
 .brand b{
@@ -139,7 +145,6 @@ img,svg{max-width:100%}
   .dropdown a{padding:9px 0}
   .dropdown a:hover{background:transparent; color:var(--accent)}
 }
-@media (max-width:1000px){.nav{position:sticky}}
 
 /* ── buttons ──────────────────────────────────────────────── */
 .btn{
@@ -364,12 +369,8 @@ footer{border-top:1px solid var(--line); background:var(--surface)}
   font-family:"JetBrains Mono",monospace; font-size:11.5px; color:var(--ink-3); letter-spacing:.04em}
 .foot-bottom span:last-child{margin-left:auto}
 
-/* ── reveal ───────────────────────────────────────────────── */
-.rv{opacity:0; transform:translateY(14px); transition:opacity .6s ease, transform .6s ease}
-.rv.in{opacity:1; transform:none}
+/* ── reveal is defined with the rest of the motion, further down ── */
 @media (prefers-reduced-motion: reduce){
-  *,*::before,*::after{animation-duration:.001ms !important; animation-iteration-count:1 !important; transition-duration:.001ms !important}
-  .rv{opacity:1; transform:none}
   .hero-panel .ln{opacity:1}
   .hero-panel .scan{display:none}
 }
@@ -724,4 +725,114 @@ ul.todo{list-style:none; margin:0; padding:13px 15px; display:flex; flex-directi
   .demo-col.after .demo-step{opacity:1; transform:none}
   .demo-col.now .demo-step.gone{opacity:.6}
   .demo-foot .saved{opacity:1; transform:none}
+}
+
+/* ════════════════════════════════════════════════════════════
+   Motion. One easing curve and one distance for everything, so
+   the whole site moves like a single object. Transform and
+   opacity only — never a property that forces layout.
+   ════════════════════════════════════════════════════════════ */
+:root{
+  --ease:cubic-bezier(.22,.68,.24,1);
+  --rise:14px;
+}
+
+@keyframes riseIn{from{opacity:0; transform:translate3d(0,var(--rise),0)}to{opacity:1; transform:none}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes drawX{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+/* the hero wash drifts slowly enough to read as light, not motion */
+@keyframes glowDrift{
+  0%,100%{transform:translate3d(-2%,0,0) scale(1)}
+  50%    {transform:translate3d(3%,-2%,0) scale(1.08)}
+}
+
+/* ── hero entrance: one sequence, played once ─────────────── */
+.hero-in > div > *{animation:riseIn .72s var(--ease) both}
+.hero-in .eyebrow      {animation-delay:.05s}
+.hero-in h1            {animation-delay:.13s}
+.hero-in .lede         {animation-delay:.23s}
+.hero-in .cta-row      {animation-delay:.31s}
+.hero-in .terms        {animation-delay:.39s}
+.hero-in .hero-panel   {animation:riseIn .8s var(--ease) .28s both}
+.page-hero-in > *      {animation:riseIn .66s var(--ease) both}
+.page-hero-in .crumbs  {animation-delay:.04s}
+.page-hero-in h1       {animation-delay:.12s}
+.page-hero-in .lede    {animation-delay:.22s}
+.page-hero-in .cta-row {animation-delay:.3s}
+
+.hero::before{animation:glowDrift 22s ease-in-out infinite; will-change:transform}
+.page-hero::before{animation:glowDrift 26s ease-in-out infinite}
+
+/* the hero structure panel fills in behind the headline */
+.map .leg{animation:riseIn .6s var(--ease) both}
+.map .split .leg:nth-child(1){animation-delay:.5s}
+.map .split .leg:nth-child(2){animation-delay:.62s}
+.map .rule{transform-origin:left; animation:drawX .7s var(--ease) .42s both}
+.map .leg li{animation:fadeIn .5s ease both}
+.map .leg:nth-child(1) li:nth-child(1){animation-delay:.66s}
+.map .leg:nth-child(1) li:nth-child(2){animation-delay:.74s}
+.map .split .leg:nth-child(2) li:nth-child(1){animation-delay:.78s}
+.map .split .leg:nth-child(2) li:nth-child(2){animation-delay:.86s}
+.map .split .leg:nth-child(2) li:nth-child(3){animation-delay:.94s}
+
+/* ── scroll reveal, with children cascading ───────────────── */
+.rv{opacity:0; transform:translate3d(0,var(--rise),0);
+    transition:opacity .62s var(--ease), transform .62s var(--ease)}
+.rv.in{opacity:1; transform:none}
+/* a grid reveals its cards one after another rather than as a slab */
+[data-stagger] > *{opacity:0; transform:translate3d(0,var(--rise),0)}
+[data-stagger].in > *{opacity:1; transform:none;
+  transition:opacity .55s var(--ease), transform .55s var(--ease);
+  transition-delay:calc(var(--i,0) * 65ms)}
+
+/* section headings draw their rule as they arrive */
+.gutter .tick{transform-origin:left; transition:transform .5s var(--ease) .1s; transform:scaleX(0)}
+.gutter .stick.in .tick{transform:scaleX(1)}
+
+/* ── nav: condenses once you start reading ────────────────── */
+.nav{transition:height .28s var(--ease), background .28s ease, box-shadow .28s ease}
+.nav-in{transition:height .28s var(--ease)}
+.nav.compact .nav-in{height:54px}
+.nav.compact{background:color-mix(in srgb, var(--ground) 96%, transparent);
+  box-shadow:0 10px 30px -22px #000000CC}
+.nav.compact .brand .mark{height:23px; transition:height .28s var(--ease)}
+.brand .mark{transition:height .28s var(--ease)}
+
+/* reading progress, hairline along the bottom edge of the nav */
+.progress{
+  position:absolute; left:0; bottom:-1px; height:2px; width:100%;
+  background:linear-gradient(90deg,var(--accent-deep),var(--accent));
+  transform:scaleX(0); transform-origin:left;
+  pointer-events:none; will-change:transform;
+}
+
+/* ── hover: lift, tint, and a light that follows nothing ──── */
+.card, .prod, .svc-item, .who-card, .next a, .pillar li a, .plan{
+  transition:transform .26s var(--ease), border-color .26s ease,
+             background .26s ease, box-shadow .26s ease;
+}
+.prod:hover, .svc-item:hover, .plan:hover{
+  transform:translateY(-3px); box-shadow:0 22px 40px -28px #000000B3;
+}
+.card:hover, .who-card:hover, .next a:hover{transform:translateY(-2px)}
+.btn{transition:transform .18s var(--ease), background .2s ease,
+     border-color .2s ease, box-shadow .24s ease, filter .2s ease}
+.btn-ghost:hover{transform:translateY(-1px); border-color:var(--accent-line);
+  background:color-mix(in srgb, var(--surface) 70%, var(--accent-soft))}
+.more svg{transition:transform .22s var(--ease)}
+.more:hover svg{transform:translateX(3px)}
+.demo-tab{transition:color .2s, border-color .2s, background .2s, transform .2s var(--ease)}
+.demo-tab:hover{transform:translateY(-1px)}
+
+/* ── everything above is decoration; none of it is required ── */
+@media (prefers-reduced-motion: reduce){
+  .hero-in > div > *, .hero-in .hero-panel, .page-hero-in > *,
+  .map .leg, .map .leg li{animation:none !important; opacity:1 !important; transform:none !important}
+  .map .rule{animation:none; transform:none}
+  .hero::before, .page-hero::before{animation:none}
+  .gutter .tick{transform:scaleX(1); transition:none}
+  [data-stagger] > *{opacity:1; transform:none}
+  .progress{display:none}
+  .prod:hover, .svc-item:hover, .plan:hover, .card:hover,
+  .who-card:hover, .next a:hover, .btn-ghost:hover, .demo-tab:hover{transform:none}
 }

@@ -111,16 +111,59 @@ if (mailBtn) mailBtn.addEventListener("click", () => {
   note.append(gmail, " or ", copy, " — we're at " + EMAIL + ".");
 });
 
-/* scroll reveals */
+/* ── scroll reveals ───────────────────────────────────────────────────
+   One observer for anything that animates on arrival. Children of a
+   [data-stagger] container get an index so CSS can cascade them.     */
 const io = new IntersectionObserver((entries) => {
   for (const en of entries) {
-    if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); }
+    if (!en.isIntersecting) continue;
+    en.target.classList.add("in");
+    io.unobserve(en.target);
   }
 }, { rootMargin: "0px 0px -8% 0px", threshold: 0.05 });
-document.querySelectorAll(".rv").forEach((el, i) => {
-  el.style.transitionDelay = Math.min(i % 4, 3) * 60 + "ms";
+
+document.querySelectorAll("[data-stagger]").forEach((group) => {
+  [...group.children].forEach((child, i) => child.style.setProperty("--i", i));
+});
+
+document.querySelectorAll(".rv, [data-stagger], .gutter .stick").forEach((el) => {
+  // Arriving at a #hash, or restoring a scroll position, jumps over content
+  // without it ever intersecting. Anything already scrolled past is shown at
+  // once and unobserved, so nobody scrolls up into a blank gap.
+  if (el.getBoundingClientRect().bottom < 0) {
+    el.style.transition = "none";
+    el.classList.add("in");
+    requestAnimationFrame(() => { el.style.transition = ""; });
+    return;
+  }
   io.observe(el);
 });
+
+/* ── nav condenses once you have started reading, and carries a
+      hairline progress bar for how far through the page you are ── */
+(function () {
+  const nav = document.getElementById("nav");
+  if (!nav) return;
+  const bar = document.createElement("div");
+  bar.className = "progress";
+  nav.appendChild(bar);
+
+  let ticking = false;
+  const onScroll = () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      const y = window.scrollY;
+      nav.classList.toggle("compact", y > 120);
+      const span = document.documentElement.scrollHeight - innerHeight;
+      bar.style.transform = "scaleX(" + (span > 0 ? Math.min(1, y / span) : 0) + ")";
+      ticking = false;
+    });
+  };
+  addEventListener("scroll", onScroll, { passive: true });
+  addEventListener("resize", onScroll, { passive: true });
+  onScroll();
+})();
 
 /* ── automation demo ──────────────────────────────────────────────────
    Plays the manual column out and the automated column in, one step at
