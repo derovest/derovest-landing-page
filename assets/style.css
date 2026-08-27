@@ -1,39 +1,22 @@
 /* ────────────────────────────────────────────────────────────
-   Derovest — tokens. Light is the default look; dark is a full
-   sibling palette, not an inversion. Never declare a colour
-   anywhere but here.
+   Derovest — one palette. Dark only, so the product sites and
+   this one read as the same company. Blues are taken from
+   mentivax.com. Never declare a colour anywhere but here.
    ──────────────────────────────────────────────────────────── */
 :root{
-  --ground:#F7F8FA; --surface:#FFFFFF; --surface-2:#EDF0F5; --line:#DDE2EA;
-  --ink:#101828; --ink-2:#475467; --ink-3:#667085;
-  --accent:#1F5FD9; --accent-soft:#1F5FD914; --accent-ink:#FFFFFF;
-  --good:#067A55; --good-soft:#067A5514;
-  --bad:#C0392B;  --bad-soft:#C0392B12;
-  --warn:#B54708; --warn-soft:#F7900914; --warn-ink:#7A2E0E;
-  --shadow:0 1px 0 #FFFFFF, 0 18px 42px -30px #1018283D;
-  --grid:#1018280A;
-  color-scheme:light;
-}
-@media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]){
-    --ground:#0B1020; --surface:#121A2E; --surface-2:#18223A; --line:#243149;
-    --ink:#E7EDF7; --ink-2:#A2AFC4; --ink-3:#6F7D95;
-    --accent:#6BA0FF; --accent-soft:#6BA0FF24; --accent-ink:#0A1020;
-    --good:#4ADE9B; --good-soft:#4ADE9B1F;
-    --bad:#F08A80;  --bad-soft:#F08A801F;
-  --warn:#FDB022; --warn-soft:#FDB0221F; --warn-ink:#FEDF89;
-    --warn:#FDB022; --warn-soft:#FDB0221F; --warn-ink:#FEDF89;
-    --shadow:0 1px 0 #FFFFFF0A, 0 24px 60px -30px #00000099;
-    --grid:#FFFFFF07;
-    color-scheme:dark;
-  }
-}
-:root[data-theme="dark"]{
-  --ground:#0B1020; --surface:#121A2E; --surface-2:#18223A; --line:#243149;
-  --ink:#E7EDF7; --ink-2:#A2AFC4; --ink-3:#6F7D95;
-  --accent:#6BA0FF; --accent-soft:#6BA0FF24; --accent-ink:#0A1020;
+  --ground:#0F1B34; --surface:#17233F; --surface-2:#1E2C4C; --line:#26365A;
+  --ink:#F2F6FD; --ink-2:#B9C3D9; --ink-3:#6B7793;
+
+  /* blue-400 reads on navy; blue-600 carries white text on a button */
+  --accent:#60A5FA; --accent-strong:#3B82F6; --accent-deep:#2563EB;
+  --accent-soft:#3B82F614; --accent-line:#3B82F63D; --accent-ink:#FFFFFF;
+  --accent-grad:linear-gradient(135deg,#3B82F6,#2563EB);
+
+  --gold:#E9A93D;
   --good:#4ADE9B; --good-soft:#4ADE9B1F;
   --bad:#F08A80;  --bad-soft:#F08A801F;
+  --warn:#FDB022; --warn-soft:#FDB0221F; --warn-ink:#FEDF89;
+
   --shadow:0 1px 0 #FFFFFF0A, 0 24px 60px -30px #00000099;
   --grid:#FFFFFF07;
   color-scheme:dark;
@@ -131,6 +114,10 @@ img,svg{max-width:100%}
     color:var(--ink-2); cursor:pointer;
   }
   .nav-toggle:hover{color:var(--ink); border-color:var(--ink-3)}
+  /* one glyph at a time: bars when closed, cross when open */
+  .nav-toggle .ex{display:none}
+  .nav[data-open="true"] .nav-toggle .bars{display:none}
+  .nav[data-open="true"] .nav-toggle .ex{display:block}
   .nav-in{gap:10px}
   .nav-links{
     position:absolute; top:100%; left:0; right:0; margin:0;
@@ -153,19 +140,6 @@ img,svg{max-width:100%}
   .dropdown a:hover{background:transparent; color:var(--accent)}
 }
 @media (max-width:1000px){.nav{position:sticky}}
-.theme-btn{
-  display:grid; place-items:center; width:34px; height:34px; flex:none;
-  border:1px solid var(--line); border-radius:9px; background:var(--surface);
-  color:var(--ink-2); cursor:pointer; transition:color .18s, border-color .18s;
-}
-.theme-btn:hover{color:var(--ink); border-color:var(--ink-3)}
-.theme-btn .moon{display:none}
-:root[data-theme="dark"] .theme-btn .moon{display:block}
-:root[data-theme="dark"] .theme-btn .sun{display:none}
-@media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]) .theme-btn .moon{display:block}
-  :root:not([data-theme="light"]) .theme-btn .sun{display:none}
-}
 
 /* ── buttons ──────────────────────────────────────────────── */
 .btn{
@@ -175,8 +149,8 @@ img,svg{max-width:100%}
   font-family:"Manrope",sans-serif; transition:transform .16s ease, background .18s ease, border-color .18s ease;
 }
 .btn:active{transform:translateY(1px)}
-.btn-primary{background:var(--accent); color:var(--accent-ink)}
-.btn-primary:hover{background:color-mix(in srgb, var(--accent) 86%, var(--ink))}
+.btn-primary{background:var(--accent-grad); color:var(--accent-ink); box-shadow:0 6px 18px -8px #2563EBAA}
+.btn-primary:hover{filter:brightness(1.1); box-shadow:0 10px 26px -8px #2563EBCC; transform:translateY(-1px)}
 .btn-ghost{border-color:var(--line); color:var(--ink); background:var(--surface)}
 .btn-ghost:hover{border-color:var(--ink-3)}
 .btn-sm{padding:9px 15px; font-size:14px; border-radius:9px}
@@ -637,12 +611,9 @@ ul.todo{list-style:none; margin:0; padding:13px 15px; display:flex; flex-directi
 .field-row{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px}
 @media (max-width:600px){.field-row{grid-template-columns:minmax(0,1fr)}}
 
-/* ── phone widths: the nav row runs out of room ────────────
-   The CTA is the conversion path, so the theme button is the
-   one that goes. Theme still follows the OS on these widths. */
+/* ── phone widths: the nav row runs out of room ──────────── */
 @media (max-width:540px){
   .nav-in{gap:9px}
-  .theme-btn{display:none}
   .btn-sm{padding:9px 12px; font-size:13.5px}
 }
 
@@ -657,3 +628,100 @@ ul.todo{list-style:none; margin:0; padding:13px 15px; display:flex; flex-directi
 }
 .answer b{color:var(--ink); font-weight:700}
 @media (max-width:600px){.answer{font-size:17px}}
+
+/* ════════════════════════════════════════════════════════════
+   Automation demo — the manual column drains away as the
+   automated column fills in. Plays on view, loops, pauses on
+   hover, and shows everything at once under reduced-motion.
+   ════════════════════════════════════════════════════════════ */
+.demo{margin-top:40px}
+.demo-tabs{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:20px}
+.demo-tab{
+  font-family:"JetBrains Mono",monospace; font-size:12px; letter-spacing:.03em;
+  padding:9px 14px; border-radius:9px; border:1px solid var(--line);
+  background:var(--surface); color:var(--ink-3); cursor:pointer;
+  transition:color .2s, border-color .2s, background .2s;
+  position:relative; overflow:hidden;
+}
+.demo-tab:hover{color:var(--ink-2); border-color:var(--ink-3)}
+.demo-tab[aria-selected="true"]{color:var(--ink); border-color:var(--accent-line); background:var(--accent-soft)}
+/* the bar underneath shows how long until the next scenario */
+.demo-tab i{
+  position:absolute; left:0; bottom:0; height:2px; width:0; background:var(--accent);
+  display:block;
+}
+.demo-tab[aria-selected="true"] i{animation:tabFill var(--dwell,9s) linear forwards}
+@keyframes tabFill{from{width:0}to{width:100%}}
+
+.demo-panel{
+  border:1px solid var(--line); border-radius:16px; background:var(--surface);
+  overflow:hidden; box-shadow:var(--shadow);
+}
+.demo-head{
+  display:flex; align-items:center; gap:11px; flex-wrap:wrap;
+  padding:15px 18px; border-bottom:1px solid var(--line); background:var(--surface-2);
+}
+.demo-head .when{
+  font-family:"JetBrains Mono",monospace; font-size:11px; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--accent);
+}
+.demo-head .what{font-size:14.5px; color:var(--ink-2)}
+.demo-head .who{
+  margin-left:auto; font-family:"JetBrains Mono",monospace; font-size:10.5px;
+  letter-spacing:.1em; text-transform:uppercase; color:var(--ink-3);
+}
+@media (max-width:700px){.demo-head .who{margin-left:0}}
+
+.demo-cols{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1px; background:var(--line)}
+@media (max-width:820px){.demo-cols{grid-template-columns:minmax(0,1fr)}}
+.demo-col{background:var(--surface); padding:18px 18px 20px}
+.demo-col h4{
+  font-family:"JetBrains Mono",monospace; font-size:10.5px; letter-spacing:.12em;
+  text-transform:uppercase; margin:0 0 14px; font-weight:400;
+}
+.demo-col.now h4{color:var(--bad)}
+.demo-col.after h4{color:var(--good)}
+
+.demo-step{
+  display:flex; gap:11px; align-items:flex-start; padding:9px 0;
+  font-size:14.5px; line-height:1.45; border-bottom:1px solid var(--line);
+}
+.demo-step:last-child{border-bottom:0}
+.demo-step .ico{flex:none; width:16px; height:16px; margin-top:2px}
+.demo-step .cost{
+  margin-left:auto; font-family:"JetBrains Mono",monospace; font-size:11.5px;
+  color:var(--ink-3); white-space:nowrap; padding-left:10px;
+}
+
+/* manual side: each step greys out and strikes through as it is taken away */
+.demo-col.now .demo-step{color:var(--ink-2)}
+.demo-col.now .demo-step .ico{color:var(--bad)}
+.demo-col.now .demo-step.gone{color:var(--ink-3); text-decoration:line-through; opacity:.5}
+.demo-col.now .demo-step, .demo-col.now .demo-step .cost{transition:opacity .45s ease, color .45s ease}
+
+/* automated side: steps arrive one at a time */
+.demo-col.after .demo-step{color:var(--ink-2); opacity:0; transform:translateY(6px)}
+.demo-col.after .demo-step .ico{color:var(--good)}
+.demo-col.after .demo-step.in{opacity:1; transform:none; color:var(--ink); transition:opacity .4s ease, transform .4s ease, color .4s ease}
+
+.demo-foot{
+  display:flex; align-items:center; gap:12px; flex-wrap:wrap;
+  padding:15px 18px; border-top:1px solid var(--line); background:var(--surface-2);
+}
+.demo-foot .saved{
+  display:inline-flex; align-items:center; gap:8px;
+  font-family:"JetBrains Mono",monospace; font-size:12.5px; color:var(--good);
+  opacity:0; transform:translateY(4px); transition:opacity .5s ease, transform .5s ease;
+}
+.demo-foot .saved.in{opacity:1; transform:none}
+.demo-foot .note{
+  margin-left:auto; font-family:"JetBrains Mono",monospace; font-size:11px; color:var(--ink-3);
+}
+@media (max-width:700px){.demo-foot .note{margin-left:0}}
+
+@media (prefers-reduced-motion: reduce){
+  .demo-tab[aria-selected="true"] i{animation:none; width:100%}
+  .demo-col.after .demo-step{opacity:1; transform:none}
+  .demo-col.now .demo-step.gone{opacity:.6}
+  .demo-foot .saved{opacity:1; transform:none}
+}
