@@ -1,0 +1,160 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/index",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/home",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/automation",
+      "destination": "/services/business-automation",
+      "permanent": true
+    },
+    {
+      "source": "/engagements",
+      "destination": "/services",
+      "permanent": true
+    },
+    {
+      "source": "/process",
+      "destination": "/services",
+      "permanent": true
+    },
+    {
+      "source": "/pricing",
+      "destination": "/services",
+      "permanent": true
+    },
+    {
+      "source": "/software-development",
+      "destination": "/services/software-development",
+      "permanent": true
+    },
+    {
+      "source": "/technology-staffing",
+      "destination": "/services/technology-staffing",
+      "permanent": true
+    },
+    {
+      "source": "/staffing",
+      "destination": "/services/technology-staffing",
+      "permanent": true
+    },
+    {
+      "source": "/business-automation",
+      "destination": "/services/business-automation",
+      "permanent": true
+    },
+    {
+      "source": "/faqs",
+      "destination": "/faq",
+      "permanent": true
+    },
+    {
+      "source": "/contact-us",
+      "destination": "/contact",
+      "permanent": true
+    },
+    {
+      "source": "/about-us",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/mentivax",
+      "destination": "/products/mentivax",
+      "permanent": true
+    },
+    {
+      "source": "/portvax",
+      "destination": "/products/portvax",
+      "permanent": true
+    },
+    {
+      "source": "/mendivax",
+      "destination": "/products/mentivax",
+      "permanent": true
+    },
+    {
+      "source": "/protvax",
+      "destination": "/products/portvax",
+      "permanent": true
+    },
+    {
+      "source": "/products/mendivax",
+      "destination": "/products/mentivax",
+      "permanent": true
+    },
+    {
+      "source": "/products/protvax",
+      "destination": "/products/portvax",
+      "permanent": true
+    }
+  ],
+  "headers": [
+    {
+      "source": "/assets/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400, must-revalidate"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)\\.(png|svg|ico|webp|jpg|jpeg|woff2)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/sitemap.xml",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/xml; charset=utf-8"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(), geolocation=(), payment=()"
+        },
+        {
+          "key": "Strict-Transport-Security",
+          "value": "max-age=63072000; includeSubDomains; preload"
+        }
+      ]
+    }
+  ]
+}
