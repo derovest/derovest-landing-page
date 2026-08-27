@@ -39,7 +39,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&amp;family=Manrope:wght@400..800&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&amp;family=Manrope:wght@400..800&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap">
-<link rel="stylesheet" href="/assets/style.css?v=8141700ec3">
+<link rel="stylesheet" href="/assets/style.css?v=9dc7bb282a">
 <noscript><style>.rv{opacity:1;transform:none}</style></noscript>
 <script src="/assets/site.js?v=0aae1a8974" defer></script>
 
@@ -124,6 +124,26 @@
             "@id": "https://www.derovest.com/services/business-automation#service",
             "name": "Business Automation",
             "description": "If your team repeatedly does the same manual task, we can look at whether technology can do it instead."
+          }
+        },
+        {
+          "@type": "Offer",
+          "url": "https://www.derovest.com/services/seo",
+          "itemOffered": {
+            "@type": "Service",
+            "@id": "https://www.derovest.com/services/seo#service",
+            "name": "SEO Optimisation",
+            "description": "Get found for what you actually sell, and know which pages are doing the work."
+          }
+        },
+        {
+          "@type": "Offer",
+          "url": "https://www.derovest.com/services/server-cost-reduction",
+          "itemOffered": {
+            "@type": "Service",
+            "@id": "https://www.derovest.com/services/server-cost-reduction#service",
+            "name": "Server Cost Reduction",
+            "description": "Cut what your infrastructure costs, with changes staged so your service stays up."
           }
         }
       ]
@@ -333,6 +353,126 @@
           }
         ]
       }
+    },
+    {
+      "@type": "Service",
+      "@id": "https://www.derovest.com/services/seo#service",
+      "name": "SEO Optimisation",
+      "serviceType": "SEO Optimisation",
+      "description": "Most sites are not losing search traffic because of the writing. They are losing it because search engines cannot read the structure, the pages load slowly, or nothing on the site answers the question people typed. We fix the mechanics first, then the content.",
+      "url": "https://www.derovest.com/services/seo",
+      "provider": {
+        "@id": "https://www.derovest.com/#organization"
+      },
+      "areaServed": "Worldwide",
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "SEO Optimisation",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Technical audit: indexing, crawling and what is blocking them"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Titles, descriptions and heading structure that match real queries"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Structured data so search engines understand what you are"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Site structure and internal linking that spreads authority"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Page speed and Core Web Vitals"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Search Console set up properly, with reporting you can read"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "@type": "Service",
+      "@id": "https://www.derovest.com/services/server-cost-reduction#service",
+      "name": "Server Cost Reduction",
+      "serviceType": "Server Cost Reduction",
+      "description": "Server bills grow by accident — a machine left running, a plan nobody downgraded, capacity provisioned for traffic that never arrived. We read the bill line by line, measure what is actually being used, and remove the difference in stages, with a way back at every step.",
+      "url": "https://www.derovest.com/services/server-cost-reduction",
+      "provider": {
+        "@id": "https://www.derovest.com/#organization"
+      },
+      "areaServed": "Worldwide",
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Server Cost Reduction",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Cloud and hosting bills read line by line, with what each line is for"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Idle, oversized, duplicated and forgotten resources identified"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Right-sizing based on measured usage, not on guesswork"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Committed and reserved pricing applied where it genuinely pays back"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Storage, backup and data transfer costs reviewed, not just compute"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Every change staged with a rollback, so nothing goes dark"
+            }
+          }
+        ]
+      }
     }
   ]
 }
@@ -358,6 +498,8 @@
           <a href="/services/software-development">Software Development<span>Build what you need without building a team from scratch.</span></a>
           <a href="/services/technology-staffing">Technology Staffing<span>Contract professionals and hiring support, screened by engineers.</span></a>
           <a href="/services/business-automation">Business Automation<span>Automate the manual work your team repeats every week.</span></a>
+          <a href="/services/seo">SEO Optimisation<span>Get found for what you actually sell.</span></a>
+          <a href="/services/server-cost-reduction">Server Cost Reduction<span>Cut the infrastructure bill without going offline.</span></a>
         </div>
       </div>
       <a href="/about">About</a>
@@ -414,6 +556,8 @@
               <li>Software development</li>
               <li>Technology staffing</li>
               <li>Business automation</li>
+              <li>SEO optimisation</li>
+              <li>Server cost reduction</li>
             </ul>
           </div>
         </div>
@@ -428,7 +572,7 @@
     <div class="gutter"><div class="stick"><span class="tick"></span><span class="code-label">§01<br>What we do</span></div></div>
     <div>
       <h2 class="rv">What is Derovest?</h2>
-      <p class="answer rv"><b>Derovest is a technology company with two sides.</b> It builds and owns its own software products — <b>Mentivax</b>, school management software, and <b>PORTVAX</b>, a no-code trading platform. It also provides technology services to other businesses: <b>software development</b>, <b>technology staffing</b> and <b>business automation</b>. Derovest works with software companies, startups and non-technology businesses, remotely, worldwide.</p>
+      <p class="answer rv"><b>Derovest is a technology company with two sides.</b> It builds and owns its own software products — <b>Mentivax</b>, school management software, and <b>PORTVAX</b>, a no-code trading platform. It also provides technology services to other businesses: <b>software development</b>, <b>technology staffing</b>, <b>business automation</b>, <b>SEO optimisation</b> and <b>server cost reduction</b>. Derovest works with software companies, startups and non-technology businesses, remotely, worldwide.</p>
       <p class="sec-lede rv">Those two sides are worth keeping separate, because most visitors only need one of them. Here is which is which.</p>
 
       <div class="pillars rv" data-stagger>
@@ -450,6 +594,8 @@
             <li><a href="/services/software-development"><b>Software Development</b><span>Build what you need without building a team from scratch.</span></a></li>
             <li><a href="/services/technology-staffing"><b>Technology Staffing</b><span>Contract professionals and hiring support, screened by engineers.</span></a></li>
             <li><a href="/services/business-automation"><b>Business Automation</b><span>Automate the manual work your team repeats every week.</span></a></li>
+            <li><a href="/services/seo"><b>SEO Optimisation</b><span>Get found for what you actually sell.</span></a></li>
+            <li><a href="/services/server-cost-reduction"><b>Server Cost Reduction</b><span>Cut the infrastructure bill without going offline.</span></a></li>
           </ul>
           <div class="foot"><a class="more" href="/services" style="margin-top:0">All services <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
         </div>
@@ -501,7 +647,7 @@
     <div class="gutter"><div class="stick"><span class="tick"></span><span class="code-label">§03<br>Services</span></div></div>
     <div>
       <h2 class="rv">Technology services built<br>around practical business needs.</h2>
-      <p class="sec-lede rv">Three areas. Most engagements start in one of them and stay there — you do not have to buy the whole list.</p>
+      <p class="sec-lede rv">Five areas. Most engagements start in one of them and stay there — you do not have to buy the whole list.</p>
       <div class="svc-list rv" data-stagger>
         <article class="svc-item" id="software-development">
           <span class="num">01</span>
@@ -543,6 +689,34 @@
             <li>Manual reporting and spreadsheet-based workflows</li>
             <li>Repetitive administrative and back-office tasks</li>
             <li>Approval and hand-off processes that rely on someone remembering</li>
+          </ul>
+        </article>
+        <article class="svc-item" id="seo">
+          <span class="num">04</span>
+          <div>
+            <h3><a href="/services/seo" style="text-decoration:none">SEO Optimisation</a></h3>
+            <div class="who">For businesses that want to be found in search</div>
+            <p>Get found for what you actually sell, and know which pages are doing the work.</p>
+          </div>
+          <ul>
+            <li>Technical audit: indexing, crawling and what is blocking them</li>
+            <li>Titles, descriptions and heading structure that match real queries</li>
+            <li>Structured data so search engines understand what you are</li>
+            <li>Site structure and internal linking that spreads authority</li>
+          </ul>
+        </article>
+        <article class="svc-item" id="server-cost-reduction">
+          <span class="num">05</span>
+          <div>
+            <h3><a href="/services/server-cost-reduction" style="text-decoration:none">Server Cost Reduction</a></h3>
+            <div class="who">For teams paying more than they need to keep things running</div>
+            <p>Cut what your infrastructure costs, with changes staged so your service stays up.</p>
+          </div>
+          <ul>
+            <li>Cloud and hosting bills read line by line, with what each line is for</li>
+            <li>Idle, oversized, duplicated and forgotten resources identified</li>
+            <li>Right-sizing based on measured usage, not on guesswork</li>
+            <li>Committed and reserved pricing applied where it genuinely pays back</li>
           </ul>
         </article>
       </div>
@@ -700,6 +874,8 @@
             <option>Software development</option>
             <option>Technology staffing</option>
             <option>Business automation</option>
+            <option>SEO optimisation</option>
+            <option>Server cost reduction</option>
             <option>Derovest products</option>
             <option>Other</option>
           </select>
@@ -737,6 +913,8 @@
       <a href="/services/software-development">Software Development</a>
       <a href="/services/technology-staffing">Technology Staffing</a>
       <a href="/services/business-automation">Business Automation</a>
+      <a href="/services/seo">SEO Optimisation</a>
+      <a href="/services/server-cost-reduction">Server Cost Reduction</a>
     </nav>
     <nav class="col" aria-label="Company">
       <span class="code-label">Company</span>
