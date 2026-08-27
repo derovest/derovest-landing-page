@@ -193,9 +193,12 @@ document.querySelectorAll(".rv").forEach((el, i) => {
   new IntersectionObserver((entries, obs) => {
     for (const e of entries) {
       if (!e.isIntersecting) continue;
+      obs.disconnect();
+      // someone who already picked a scenario keeps it — scrolling in must not
+      // yank the selection back to the first one
+      if (manual) return;
       playing = true;
       show(0, { auto: true });
-      obs.disconnect();
     }
   }, { threshold: 0.25 }).observe(root);
 })();
