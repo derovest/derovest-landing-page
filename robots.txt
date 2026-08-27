@@ -1,0 +1,10 @@
+# https://www.derovest.com/robots.txt
+# Everything here is meant to be found.
+
+User-agent: *
+Allow: /
+
+# Nothing on this site needs a crawl delay, and there is no
+# staging, admin or search-result path to keep out of the index.
+
+Sitemap: https://www.derovest.com/sitemap.xml
