@@ -665,7 +665,6 @@ body{padding-top:74px}
 /* phones: the hero is lit, but nothing moves */
 @media (max-width:700px){
   .hero-bg .aurora{animation:none}
-  .marquee-track{animation:none}
   .hero-bg .beam,.hero-bg .motes{display:none}
 }
 
@@ -1032,93 +1031,6 @@ body{padding-top:74px}
 .dg-caption{margin-top:14px; font-family:"JetBrains Mono",monospace; font-size:10.5px;
   letter-spacing:.1em; text-transform:uppercase; color:var(--ink-4); line-height:1.7}
 
-
-/* ═══ 10b. THE STACK ═══════════════════════════════════════════════════
-   Four layers of the thing we actually build, each naming only what gets
-   used day to day, plus a marquee that keeps the section moving. The
-   marquee duplicates its own contents so the loop is seamless, and it
-   pauses on hover so a name can be read.
-   ═════════════════════════════════════════════════════════════════════ */
-.stack{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:1px;
-  margin-top:clamp(36px,4vw,54px); background:var(--line);
-  border:1px solid var(--line); border-radius:var(--radius-lg); overflow:hidden}
-@media (max-width:1000px){.stack{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (max-width:620px){.stack{grid-template-columns:minmax(0,1fr)}}
-
-.layer{
-  position:relative; background:var(--panel); padding:clamp(22px,2.4vw,28px);
-  display:flex; flex-direction:column; gap:14px; overflow:hidden; isolation:isolate;
-  transition:background var(--t) ease;
-}
-.layer::before{
-  content:""; position:absolute; inset:0; z-index:-1; opacity:0;
-  background:radial-gradient(80% 60% at 50% 0%, #4C8DFF1F, transparent 70%);
-  transition:opacity var(--t-slow) var(--ease);
-}
-.layer:hover::before{opacity:1}
-.layer-n{
-  display:inline-flex; align-items:center; gap:9px;
-  font-family:"JetBrains Mono",monospace; font-size:10.5px; letter-spacing:.16em;
-  text-transform:uppercase; color:var(--blue-ink);
-}
-.layer-n::before{
-  content:""; width:22px; height:2px; border-radius:2px; background:var(--blue);
-}
-.layer h3{font-size:19px; font-weight:700; letter-spacing:-.025em}
-.layer > p{color:var(--ink-3); font-size:14px; line-height:1.55}
-.layer .chips{margin-top:auto; padding-top:14px; border-top:1px solid var(--line)}
-.layer .chip{
-  font-size:12px; padding:6px 11px; background:var(--bg-2);
-  border-color:var(--line-2); color:var(--ink-2);
-  transition:border-color var(--t) ease, color var(--t) ease, background var(--t) ease;
-}
-.layer:hover .chip{border-color:var(--blue-line); color:var(--ink)}
-
-/* ── marquee ───────────────────────────────────────────────────────── */
-.marquee{
-  position:relative; margin-top:22px; overflow:hidden;
-  border:1px solid var(--line); border-radius:var(--radius);
-  background:linear-gradient(180deg, var(--panel), var(--bg-2));
-  padding-block:16px;
-  /* fade both ends so names enter and leave rather than being cut */
-  mask-image:linear-gradient(90deg, transparent, #000 9%, #000 91%, transparent);
-  -webkit-mask-image:linear-gradient(90deg, transparent, #000 9%, #000 91%, transparent);
-}
-.marquee + .marquee{margin-top:10px}
-.marquee-track{
-  display:flex; align-items:center; gap:10px; width:max-content;
-  animation:marquee 38s linear infinite; will-change:transform;
-}
-.marquee-rtl .marquee-track{animation-direction:reverse; animation-duration:46s}
-.marquee:hover .marquee-track,.marquee:focus-within .marquee-track{animation-play-state:paused}
-@keyframes marquee{from{transform:translate3d(0,0,0)} to{transform:translate3d(-50%,0,0)}}
-.marquee-track span{
-  flex:none; display:inline-flex; align-items:center; gap:9px;
-  font-family:"JetBrains Mono",monospace; font-size:13px; letter-spacing:.02em;
-  padding:9px 15px; border-radius:9px;
-  border:1px solid var(--line-2); background:#FFFFFF06; color:var(--ink-2);
-  white-space:nowrap;
-}
-.marquee-track span::before{
-  content:""; width:5px; height:5px; border-radius:50%; background:var(--blue); flex:none;
-}
-.marquee-track span:nth-child(3n)::before{background:var(--gold)}
-.marquee-track span:nth-child(5n)::before{background:var(--good)}
-
-/* the line that keeps the section honest */
-.stack-note{
-  display:flex; flex-wrap:wrap; align-items:center; gap:12px; margin-top:22px;
-  padding:16px 20px; border:1px solid var(--line); border-radius:var(--radius);
-  background:#FFFFFF05;
-}
-.stack-note svg{color:var(--blue-ink); flex:none}
-.stack-note p{font-size:14.5px; color:var(--ink-2); max-width:78ch; line-height:1.6}
-.stack-note b{color:var(--ink)}
-
-@media (max-width:700px){
-  .marquee-track{animation-duration:26s}
-  .marquee-rtl .marquee-track{animation-duration:32s}
-}
 
 /* ═══ 11. AUTOMATION STORY ═════════════════════════════════════════════
    Six manual steps collapse into one automated run as the reader scrolls
@@ -1877,7 +1789,6 @@ html::after{
 /* phones: the hero is lit, but nothing moves */
 @media (max-width:700px){
   .hero-bg .aurora{animation:none}
-  .marquee-track{animation:none}
   .hero-bg .beam,.hero-bg .motes{display:none}
 }
 
@@ -2008,7 +1919,6 @@ html::after{
   .branch .spark{display:none}
   .hero-bg .beam,.hero-bg .motes,.hero-bg .sheen{display:none}
   .hero-bg .aurora{animation:none}
-  .marquee-track{animation:none}
   .branch .pip{animation:none; opacity:.8}
 }
 
@@ -2027,7 +1937,6 @@ html::after{
   .branch .spark{display:none}
   .hero-bg .beam,.hero-bg .motes,.hero-bg .sheen{display:none}
   .hero-bg .aurora{animation:none}
-  .marquee-track{animation:none}
   .spine .tick,.timeline::before{transform:scaleX(1) !important}
   .dg-bar{transform:scaleY(1) !important}
   .mock .equity{stroke-dashoffset:0 !important}
