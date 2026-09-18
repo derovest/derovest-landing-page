@@ -156,55 +156,25 @@ if (year) year.textContent = new Date().getFullYear();
 })();
 
 
-/* ══ 4. THE DRAFTING TABLE ═══════════════════════════════════════════
-   Three small things: the nav takes ink while the paper hero is under
-   it; a legend item focuses its piece of the drawing; and on a desktop
-   pointer a lens follows the cursor. The lens writes two custom
-   properties per frame and reads layout once per hover.                */
-(function draft() {
-  const fig = $("#draft");
-  if (!fig) return;
-  const hero = fig.closest(".hero");
-  const bar = $("#nav");
+/* ══ 4. POINTER PARALLAX ══════════════════════════════════════════════
+   Desktop only, and only for the hero diagram. The handler writes two
+   custom properties and nothing else — no layout is read per move.     */
+(function parallax() {
+  const art = $("#branch");
+  if (!art || !FINE.matches || REDUCED.matches) return;
 
-  if (bar && hero) {
-    let queued = false;
-    const sync = () => {
-      if (queued) return;
-      queued = true;
-      requestAnimationFrame(() => {
-        bar.classList.toggle("on-paper", hero.getBoundingClientRect().bottom > 48);
-        queued = false;
-      });
-    };
-    sync();
-    addEventListener("scroll", sync, { passive: true });
-    addEventListener("resize", sync, { passive: true });
-  }
-
-  $$(".hero-legend a[data-piece]").forEach((a) => {
-    const on  = () => { fig.dataset.focus = a.dataset.piece; };
-    const off = () => { delete fig.dataset.focus; };
-    a.addEventListener("mouseenter", on); a.addEventListener("focus", on);
-    a.addEventListener("mouseleave", off); a.addEventListener("blur", off);
-  });
-
-  if (!FINE.matches || REDUCED.matches) return;
-  let box = null, queued = false, x = 0, y = 0;
-  fig.addEventListener("pointerenter", () => { box = fig.getBoundingClientRect(); fig.classList.add("live"); });
-  fig.addEventListener("pointermove", (e) => {
-    x = e.clientX; y = e.clientY;
+  let queued = false, px = 0, py = 0;
+  addEventListener("pointermove", (e) => {
+    px = (e.clientX / innerWidth - 0.5) * 2;
+    py = (e.clientY / innerHeight - 0.5) * 2;
     if (queued) return;
     queued = true;
     requestAnimationFrame(() => {
-      if (!box) box = fig.getBoundingClientRect();
-      fig.style.setProperty("--mx", ((x - box.left) / box.width * 100).toFixed(2) + "%");
-      fig.style.setProperty("--my", ((y - box.top) / box.height * 100).toFixed(2) + "%");
+      art.style.setProperty("--px", px.toFixed(3));
+      art.style.setProperty("--py", py.toFixed(3));
       queued = false;
     });
   }, { passive: true });
-  fig.addEventListener("pointerleave", () => { fig.classList.remove("live"); box = null; });
-  addEventListener("resize", () => { box = null; }, { passive: true });
 })();
 
 

@@ -498,6 +498,21 @@ body{padding-top:74px}
    narrow screens the diagram drops below and sheds its outer ring.
    ═════════════════════════════════════════════════════════════════════ */
 .hero{position:relative; border-bottom:1px solid var(--line); overflow:hidden; isolation:isolate}
+.hero::before{
+  content:""; position:absolute; inset:0; z-index:-3; pointer-events:none;
+  background:
+    linear-gradient(var(--grid-line) 1px, transparent 1px) 0 0/100% 40px,
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px) 0 0/40px 100%;
+  mask-image:radial-gradient(130% 100% at 30% 10%, #000 25%, transparent 80%);
+}
+/* the hero's light is animated now (see .hero-bg); this is only the
+   falloff that keeps the headline sitting on a darker patch */
+.hero::after{
+  content:""; position:absolute; inset:0; z-index:-1; pointer-events:none;
+  background:
+    radial-gradient(70% 60% at 28% 52%, #05091A66, transparent 70%),
+    linear-gradient(180deg, transparent 60%, #05091A99 100%);
+}
 .hero-in{
   position:relative; display:grid; align-items:center;
   grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);
@@ -512,6 +527,10 @@ body{padding-top:74px}
   font-size:clamp(36px,4.6vw,61px); font-weight:800; line-height:1.02;
   letter-spacing:-.042em; font-variation-settings:"wdth" 97;
 }
+.hero h1 .accent{
+  color:transparent; background:linear-gradient(105deg,#7FB0FF 10%,#4C8DFF 42%,#EAB44F 96%);
+  -webkit-background-clip:text; background-clip:text;
+}
 .hero .lede{max-width:52ch}
 .hero-cta{display:flex; flex-wrap:wrap; gap:12px; margin-top:clamp(28px,3vw,38px)}
 .hero-proof{
@@ -525,198 +544,182 @@ body{padding-top:74px}
 }
 .hero-proof svg{color:var(--blue-ink); flex:none}
 
-/* ═══ 7b. THE DRAFTING TABLE ═══════════════════════════════════════════
-   The hero is a sheet of paper, not a dark field. On it, a technical
-   drawing of what an engagement looks like — drawn in blueprint ink,
-   with dimension lines, numbered callouts, a title block and a revision
-   stamp, the way an engineering sheet is laid out. It draws itself on
-   load; a lens under the cursor sharpens the ink beneath it.
+/* ── animated hero backdrop ────────────────────────────────────────────
+   Four moving layers, all transform/opacity only, all GPU-composited:
 
-   Palette is three things only: paper, ink, one gold. Everything else
-   in this block is proportion.
-   ═════════════════════════════════════════════════════════════════════ */
-.hero.paper{
-  --paper:#F4F0E7; --paper-deep:#EAE4D6; --paper-line:#D9D2C2;
-  --ink:#14213D; --ink-2:#3A4766; --ink-3:#5C6681; --ink-4:#6E7893;
-  --bp:#1F4FC0; --bp-2:#3B68D6; --bp-soft:#1F4FC014; --bp-line:#1F4FC044;
-  --gold:#B8801F; --gold-2:#D7A345;
-  --line:var(--paper-line); --line-2:#C9C1AE;
-  --blue-ink:var(--bp); --blue:var(--bp); --blue-2:var(--bp-2); --blue-3:#173E9C;
-  --blue-soft:var(--bp-soft); --blue-line:var(--bp-line); --blue-glow:#1F4FC033;
-  --panel:#FFFFFF; --panel-2:var(--paper-deep);
-  background:var(--paper); color:var(--ink); color-scheme:light;
-  border-bottom:1px solid #14213D;
-  margin-top:-74px; padding-top:74px;
-}
-/* paper is a surface: grid in faint ink, a warm light from the upper left,
-   and grain so it is never a flat colour */
-.hero.paper::before{
-  content:""; position:absolute; inset:0; z-index:0; pointer-events:none;
-  background:
-    radial-gradient(70% 60% at 18% 0%, #FFFFFF, transparent 70%),
-    linear-gradient(#1F4FC00D 1px, transparent 1px) 0 0/100% 32px,
-    linear-gradient(90deg, #1F4FC00D 1px, transparent 1px) 0 0/32px 100%,
-    radial-gradient(100% 100% at 50% 100%, #14213D10, transparent 60%);
-}
-.hero.paper .paper-grain{
-  position:absolute; inset:0; z-index:0; pointer-events:none;
-  background-image:var(--grain); background-size:200px 200px;
-  opacity:.16; mix-blend-mode:multiply;
-}
-.hero.paper .hero-in{
-  position:relative; z-index:1;
-  grid-template-columns:minmax(0,.86fr) minmax(0,1.14fr);
-  gap:clamp(28px,4vw,72px); align-items:center;
-  min-height:clamp(600px,calc(100svh - 74px),900px);
-  padding-block:clamp(44px,6vw,72px) clamp(52px,6vw,80px);
-}
-@media (max-width:1080px){
-  .hero.paper .hero-in{grid-template-columns:minmax(0,1fr); min-height:0; gap:40px}
-}
+     aurora  three large soft lights on different loops, so the hero is
+             never lit the same way twice
+     beams   a horizontal and a vertical line travelling the grid, which
+             is what makes the surface read as live circuitry
+     sheen   one slow diagonal pass of light across the whole hero
+     motes   particles rising, echoing the logo's climbing arrow
 
-/* — sheet tag: the little row a drawing carries at its top edge — */
-.sheet-tag{
-  display:flex; flex-wrap:nowrap; gap:0; margin-bottom:22px; width:fit-content; max-width:100%;
-  border:1px solid var(--ink); border-radius:3px; overflow:hidden;
-  font-family:"JetBrains Mono",monospace; font-size:9.5px; letter-spacing:.14em; text-transform:uppercase;
-}
-.sheet-tag span{padding:5px 9px; border-right:1px solid var(--ink); color:var(--ink-2); white-space:nowrap}
-.sheet-tag span:last-child{border-right:0}
-.sheet-tag span:first-child{background:var(--ink); color:var(--paper); font-weight:700}
+   Nothing here animates a property that forces layout, and the whole
+   thing is behind the copy at z-index -2. It halves on tablets and
+   stops entirely on phones and under prefers-reduced-motion.
+   ──────────────────────────────────────────────────────────────────── */
+.hero-bg{position:absolute; inset:0; z-index:-2; overflow:hidden; pointer-events:none}
 
-/* — the headline: Archivo's width axis, extended against condensed.
-     Two voices in one family, which is not a thing a template does. — */
-.hero.paper h1{
-  font-size:clamp(34px,3.85vw,54px); line-height:.92; letter-spacing:-.02em;
-  font-weight:800; color:var(--ink);
+/* — aurora — */
+.hero-bg .aurora{
+  position:absolute; border-radius:50%; will-change:transform;
+  mix-blend-mode:screen;
 }
-.hero.paper h1 .l1{font-variation-settings:"wdth" 118; letter-spacing:-.035em}
-.hero.paper h1 .l2{
-  display:block; font-variation-settings:"wdth" 72; font-weight:600;
-  font-size:1.3em; letter-spacing:-.01em; color:var(--bp); margin-top:.05em;
+.hero-bg .a1{
+  width:min(78vw,1040px); aspect-ratio:1; left:-20%; top:-42%;
+  background:radial-gradient(circle, #2F6BF0 0%, #2F6BF066 32%, transparent 64%);
+  opacity:.5; animation:auroraA 24s ease-in-out infinite;
 }
-.hero.paper .lede{color:var(--ink-2); max-width:44ch; font-size:clamp(16px,1.2vw,18px); margin-top:20px}
-.hero.paper .lede b{color:var(--ink)}
-.hero.paper .hero-cta{margin-top:24px}
-.hero.paper .btn-primary{background:var(--ink); box-shadow:0 10px 26px -12px #14213D80, inset 0 1px 0 #FFFFFF1F}
-.hero.paper .btn-primary:hover{background:var(--bp); box-shadow:0 14px 30px -12px #1F4FC080}
-.hero.paper .btn-ghost{background:#FFFFFF80; border-color:#14213D40; color:var(--ink)}
-.hero.paper .btn-ghost:hover{border-color:var(--ink); background:#FFFFFF}
-
-/* — legend: the numbered key to the drawing — */
-.hero-legend{
-  list-style:none; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:0;
-  margin-top:26px; border-top:1px solid var(--ink); max-width:560px;
+.hero-bg .a2{
+  width:min(52vw,680px); aspect-ratio:1; right:-14%; top:-26%;
+  background:radial-gradient(circle, #E9A93D 0%, #C9902E4D 34%, transparent 66%);
+  opacity:.3; animation:auroraB 31s ease-in-out infinite;
 }
-.hero-legend li{border-bottom:1px solid var(--paper-line)}
-.hero-legend li:nth-child(odd){border-right:1px solid var(--paper-line)}
-.hero-legend a{
-  display:grid; grid-template-columns:auto minmax(0,1fr); gap:12px; align-items:start;
-  padding:13px 14px 13px 2px; text-decoration:none; color:var(--ink);
-  transition:background var(--t) ease, padding var(--t) var(--ease);
+.hero-bg .a3{
+  width:min(70vw,900px); aspect-ratio:1; right:-10%; bottom:-48%;
+  background:radial-gradient(circle, #1B49C9 0%, #1B49C966 34%, transparent 66%);
+  opacity:.48; animation:auroraC 27s ease-in-out infinite;
 }
-.hero-legend li:nth-child(even) a{padding-left:14px}
-.hero-legend a:hover{background:#FFFFFF80; padding-left:8px}
-.hero-legend li:nth-child(even) a:hover{padding-left:20px}
-.hero-legend b{
-  width:22px; height:22px; border-radius:50%; display:grid; place-items:center; flex:none;
-  border:1.2px solid var(--ink); font-family:"JetBrains Mono",monospace; font-size:10px; font-weight:700;
-  transition:background var(--t) ease, color var(--t) ease;
+@keyframes auroraA{
+  0%,100%{transform:translate3d(0,0,0) scale(1)}
+  34%    {transform:translate3d(9%,7%,0)  scale(1.14)}
+  67%    {transform:translate3d(-6%,12%,0) scale(.93)}
 }
-.hero-legend a:hover b{background:var(--ink); color:var(--paper)}
-.hero-legend span{display:block; font-weight:700; font-size:14.5px; letter-spacing:-.01em; line-height:1.25}
-.hero-legend small{display:block; margin-top:2px; font-weight:400; font-size:12.5px; color:var(--ink-3)}
-@media (max-width:480px){
-  .hero-legend{grid-template-columns:minmax(0,1fr)}
-  .hero-legend li:nth-child(odd){border-right:0}
-  .hero-legend li:nth-child(even) a{padding-left:2px}
+@keyframes auroraB{
+  0%,100%{transform:translate3d(0,0,0) scale(1)}
+  40%    {transform:translate3d(-11%,9%,0) scale(1.2)}
+  72%    {transform:translate3d(5%,-4%,0)  scale(.9)}
+}
+@keyframes auroraC{
+  0%,100%{transform:translate3d(0,0,0) scale(1)}
+  38%    {transform:translate3d(-9%,-8%,0) scale(1.1)}
+  70%    {transform:translate3d(7%,-3%,0)  scale(.95)}
 }
 
-/* — the drawing — */
-.draft{
-  position:relative; margin:0; width:100%;
-  background:#FBF9F3; border:1px solid var(--ink); border-radius:4px;
-  box-shadow:0 1px 0 #FFFFFF, 0 30px 60px -36px #14213D66, 0 12px 24px -18px #14213D33;
-  overflow:hidden;
+/* — beams: a full-bleed element carrying a 1px line, translated a whole
+     viewport so the motion stays on the compositor — */
+.hero-bg .beam{position:absolute; inset:0; will-change:transform}
+.hero-bg .beam::before{content:""; position:absolute; background:currentColor}
+.hero-bg .beam-h{color:#7FB0FF; animation:beamDown 9s linear infinite}
+.hero-bg .beam-h::before{
+  left:0; right:0; top:0; height:1px;
+  background:linear-gradient(90deg, transparent, #7FB0FFB3 22%, #FFFFFF 50%, #7FB0FFB3 78%, transparent);
+  box-shadow:0 0 12px #4C8DFF80;
 }
-.draft svg{display:block; width:100%; height:auto; color:var(--bp)}
-.draft-cap{
-  padding:9px 14px; border-top:1px solid var(--paper-line);
-  font-family:"JetBrains Mono",monospace; font-size:10px; letter-spacing:.1em; text-transform:uppercase;
-  color:var(--ink-3); display:flex; justify-content:space-between; gap:12px; background:var(--paper);
+.hero-bg .beam-v{color:#EAB44F; animation:beamAcross 13s linear infinite; animation-delay:2.5s}
+.hero-bg .beam-v::before{
+  top:0; bottom:0; left:0; width:1px;
+  background:linear-gradient(180deg, transparent, #EAB44F99 26%, #FFE7B0 50%, #EAB44F99 74%, transparent);
+  box-shadow:0 0 12px #EAB44F66;
 }
-/* ink */
-.draft .s{
-  fill:none; stroke:currentColor; stroke-width:1.5; stroke-linecap:round; stroke-linejoin:round;
-  stroke-dasharray:1; stroke-dashoffset:1;
-  animation:draw 1.1s var(--ease-out) forwards; animation-delay:var(--d,0s);
-}
-.draft .thin{stroke-width:1}
-.draft .dim{stroke-width:.9; opacity:.75}
-.draft .dash{stroke-dasharray:.03 .02; stroke-dashoffset:1; animation:dashIn .9s ease forwards; animation-delay:var(--d,0s)}
-.draft .g{color:var(--gold)}
-.draft .f{fill:currentColor; fill-opacity:0; animation:fillIn .6s ease forwards; animation-delay:calc(var(--d,0s) + .8s)}
-/* a shape that is both drawn and filled runs both animations */
-.draft .s.f{
-  animation:draw 1.1s var(--ease-out) forwards, fillIn .6s ease forwards;
-  animation-delay:var(--d,0s), calc(var(--d,0s) + .8s);
-}
-.draft .f.soft{--fo:.14}
-.draft .f.paper{fill:#FBF9F3; --fo:1}
-.draft .t{
-  font-family:"JetBrains Mono",monospace; font-size:10.5px; letter-spacing:.06em; fill:var(--ink);
-  opacity:0; animation:fadeIn .6s ease forwards; animation-delay:calc(var(--d,0s) + .7s);
-}
-.draft .t.h{font-family:"Archivo",sans-serif; font-weight:700; font-size:12px; letter-spacing:-.01em; font-variation-settings:"wdth" 108}
-.draft .t.mute{fill:var(--ink-3)}
-.draft .t.g{fill:var(--gold)}
-.draft .t.up{text-transform:uppercase; letter-spacing:.14em; font-size:9.5px}
-/* the sequence: frame, then the four pieces, then the annotations */
-.draft .frame{--d:0s}
-.draft .p1{--d:.35s} .draft .p2{--d:.85s} .draft .p3{--d:1.35s} .draft .p4{--d:1.85s}
-.draft .dims{--d:2.3s} .draft .notes{--d:2.55s} .draft .stamp{--d:2.8s} .draft .tblock{--d:2.1s}
-@keyframes draw  {to{stroke-dashoffset:0}}
-@keyframes dashIn{to{stroke-dashoffset:0}}
-@keyframes fillIn{to{fill-opacity:var(--fo,1)}}
-/* focus from the legend: everything but the named piece steps back */
-.draft[data-focus] .piece{transition:opacity .35s var(--ease)}
-.draft[data-focus="p1"] .piece:not(.p1),.draft[data-focus="p2"] .piece:not(.p2),
-.draft[data-focus="p3"] .piece:not(.p3),.draft[data-focus="p4"] .piece:not(.p4){opacity:.22}
-/* the lens: a haze of paper with a hole where the cursor is */
-.draft .lens{
-  position:absolute; inset:0; pointer-events:none; background:#F4F0E7; opacity:0;
-  mask-image:radial-gradient(240px circle at var(--mx,50%) var(--my,50%), transparent 0 42%, #000 100%);
-  -webkit-mask-image:radial-gradient(240px circle at var(--mx,50%) var(--my,50%), transparent 0 42%, #000 100%);
-  transition:opacity .5s ease;
-}
-@media (hover:hover) and (pointer:fine){ .draft.live .lens{opacity:.5} }
-.draft .stamp-rot{transform-box:fill-box; transform-origin:center; transform:rotate(-11deg)}
+@keyframes beamDown  {from{transform:translate3d(0,-4%,0)} to{transform:translate3d(0,104%,0)}}
+@keyframes beamAcross{from{transform:translate3d(-4%,0,0)} to{transform:translate3d(104%,0,0)}}
 
-/* — the nav over paper — */
-.nav.on-paper .nav-links > a,.nav.on-paper .nav-item > a{color:#3A4766}
-.nav.on-paper .nav-links > a:hover,.nav.on-paper .nav-item:hover > a,.nav.on-paper .nav-item:focus-within > a{color:#14213D; background:#14213D0D}
-.nav.on-paper .nav-links a[aria-current="page"]{color:#14213D}
-.nav.on-paper .nav-links a[aria-current="page"]::after{background:#1F4FC0}
-.nav.on-paper .brand b{color:#14213D}
-.nav.on-paper .nav-toggle{color:#14213D; border-color:#14213D40; background:#FFFFFF80}
-.nav.on-paper.solid{background:#F4F0E7D9; border-bottom-color:#D9D2C2; box-shadow:0 20px 40px -34px #14213D66}
-.nav.on-paper .progress{opacity:0}
-.nav.on-paper .nav-cta{background:#14213D; color:#F4F0E7; box-shadow:none; opacity:1}
-.nav.on-paper .nav-cta:hover{background:#1F4FC0}
-@media (max-width:1060px){
-  .nav.on-paper[data-open="true"]{background:var(--bg)}
-  .nav.on-paper[data-open="true"] .brand b,.nav.on-paper[data-open="true"] .nav-toggle{color:var(--ink)}
-  .nav.on-paper[data-open="true"] .nav-links > a,.nav.on-paper[data-open="true"] .nav-item > a{color:var(--ink)}
+/* — sheen — */
+.hero-bg .sheen{
+  position:absolute; inset:-30% -60%; will-change:transform;
+  background:linear-gradient(108deg, transparent 40%, #7FB0FF1F 48%, #FFFFFF14 50%, #7FB0FF1F 52%, transparent 60%);
+  animation:sheen 14s ease-in-out infinite;
+}
+@keyframes sheen{
+  0%,100%{transform:translate3d(-26%,0,0)}
+  50%    {transform:translate3d(26%,0,0)}
 }
 
-/* phones: the drawing is small, so its fine print goes and the ink thickens */
+/* — motes: they climb, like the arrow in the mark — */
+.hero-bg .motes{position:absolute; inset:0}
+.hero-bg .motes i{
+  position:absolute; bottom:-8px; width:3px; height:3px; border-radius:50%;
+  background:#8FBBFF; box-shadow:0 0 6px #4C8DFFCC; opacity:0;
+  animation:rise linear infinite; will-change:transform, opacity;
+}
+.hero-bg .motes i:nth-child(3n){background:#EAB44F; box-shadow:0 0 6px #EAB44FAA}
+.hero-bg .motes i:nth-child(4n){width:2px; height:2px}
+@keyframes rise{
+  0%  {transform:translate3d(0,0,0) scale(.5); opacity:0}
+  10% {opacity:.85}
+  85% {opacity:.45}
+  100%{transform:translate3d(14px,-102%,0) scale(1); opacity:0}
+}
+/* spread them across the width on their own clocks */
+.hero-bg .motes i:nth-child(1) {left:4%;  animation-duration:17s; animation-delay:0s}
+.hero-bg .motes i:nth-child(2) {left:11%; animation-duration:22s; animation-delay:3s}
+.hero-bg .motes i:nth-child(3) {left:19%; animation-duration:14s; animation-delay:6s}
+.hero-bg .motes i:nth-child(4) {left:27%; animation-duration:25s; animation-delay:1.5s}
+.hero-bg .motes i:nth-child(5) {left:34%; animation-duration:19s; animation-delay:8s}
+.hero-bg .motes i:nth-child(6) {left:42%; animation-duration:15s; animation-delay:4.5s}
+.hero-bg .motes i:nth-child(7) {left:50%; animation-duration:23s; animation-delay:10s}
+.hero-bg .motes i:nth-child(8) {left:58%; animation-duration:18s; animation-delay:2s}
+.hero-bg .motes i:nth-child(9) {left:66%; animation-duration:21s; animation-delay:7s}
+.hero-bg .motes i:nth-child(10){left:74%; animation-duration:16s; animation-delay:11s}
+.hero-bg .motes i:nth-child(11){left:82%; animation-duration:24s; animation-delay:5s}
+.hero-bg .motes i:nth-child(12){left:89%; animation-duration:20s; animation-delay:9s}
+.hero-bg .motes i:nth-child(13){left:95%; animation-duration:26s; animation-delay:13s}
+.hero-bg .motes i:nth-child(14){left:15%; animation-duration:28s; animation-delay:15s}
+
+/* tablets: keep the light, drop the fine detail */
+@media (max-width:900px){
+  .hero-bg .motes i:nth-child(n+8){display:none}
+  .hero-bg .sheen{display:none}
+}
+/* phones: the hero is lit, but nothing moves */
 @media (max-width:700px){
-  .draft .fine{display:none}
-  .draft .s{stroke-width:2}
-  .draft .lens{display:none}
-  .sheet-tag span:nth-child(3){display:none}
+  .hero-bg .aurora{animation:none}
+  .marquee-track{animation:none}
+  .hero-bg .beam,.hero-bg .motes{display:none}
 }
-@media (max-width:1600px){ .sheet-tag span:nth-child(3){display:none} }
+
+/* ── the branch diagram ────────────────────────────────────────────────
+   Origin mark → four branches. Plain SVG in the document, animated with
+   CSS only: no render loop, so it costs nothing after first paint. */
+.branch{position:relative; width:100%; max-width:640px; margin-inline:auto; aspect-ratio:1/1}
+/* the wire layer needs its own box: it carries a transform, which makes it
+   the containing block for the absolutely positioned svg inside it */
+.branch-inner{position:absolute; inset:0}
+.branch svg{position:absolute; inset:0; width:100%; height:100%; overflow:visible}
+.branch .ring{fill:none; stroke:var(--line-2); stroke-width:1.2; opacity:.8}
+.branch .ring-2{stroke-dasharray:3 9; opacity:.4}
+.branch .wire{fill:none; stroke:url(#wireGrad); stroke-width:1.9; stroke-linecap:round}
+.branch .pip{fill:var(--blue)}
+.branch .core{fill:url(#coreGrad)}
+.branch-node{
+  position:absolute; transform:translate(-50%,-50%);
+  display:flex; flex-direction:column; gap:3px; align-items:flex-start;
+  padding:11px 15px; border-radius:12px; white-space:nowrap;
+  background:color-mix(in srgb, var(--panel) 92%, transparent);
+  backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
+  border:1px solid var(--line-2); box-shadow:0 18px 40px -26px #000000E6;
+  text-decoration:none;
+  transition:border-color var(--t) ease, transform var(--t) var(--ease), background var(--t) ease;
+}
+.branch-node:hover{border-color:var(--blue-line); background:color-mix(in srgb, var(--panel-2) 94%, transparent)}
+.branch-node b{font-family:"Archivo",sans-serif; font-weight:700; font-size:14px; letter-spacing:-.015em; color:var(--ink)}
+.branch-node span{font-family:"JetBrains Mono",monospace; font-size:9.5px; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--ink-3)}
+.branch-node.is-gold{border-color:var(--gold-line)}
+.branch-node.is-gold span{color:var(--gold)}
+.branch-core{
+  position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);
+  display:flex; flex-direction:column; align-items:center; gap:9px;
+  width:132px; height:132px; border-radius:50%; justify-content:center;
+  background:radial-gradient(circle at 50% 35%, #142352, #0A1128 80%);
+  border:1px solid var(--line-2);
+  box-shadow:0 0 0 10px #4C8DFF0A, 0 30px 60px -30px #000, inset 0 1px 0 #FFFFFF1A;
+}
+.branch-core img{width:46px; height:auto}
+.branch-core span{font-family:"JetBrains Mono",monospace; font-size:9px; letter-spacing:.22em;
+  text-transform:uppercase; color:var(--ink-3)}
+@media (max-width:1080px){.branch{max-width:520px}}
+@media (max-width:600px){
+  .branch{max-width:400px}
+  .branch-node{padding:8px 11px; border-radius:10px}
+  .branch-node b{font-size:12px}
+  .branch-node span{font-size:8.5px; letter-spacing:.1em}
+  .branch-core{width:96px; height:96px}
+  .branch-core img{width:34px}
+  .branch-core span{font-size:7.5px}
+}
+
 
 /* ═══ 8. TWO SIDES — the split ═════════════════════════════════════════
    50/50 on desktop; hovering one half takes space from the other. The
@@ -1741,16 +1744,182 @@ html::after{
 
 /* ── hero entrance ─────────────────────────────────────────────────── */
 .hero-copy > *{animation:riseIn .8s var(--ease) both}
-.hero-copy > .eyebrow,.hero-copy > .sheet-tag{animation-delay:.02s}
-.hero-copy > .hero-legend{animation-delay:.64s}
+.hero-copy > .eyebrow{animation-delay:.02s}
 .hero-copy > h1       {animation:none}
 .hero-copy > .lede    {animation-delay:.42s}
 .hero-copy > .hero-cta{animation-delay:.52s}
 .hero-copy > .hero-proof{animation-delay:.6s}
+.hero-art{animation:riseIn 1s var(--ease) .3s both}
+.hero::after{animation:drift 26s ease-in-out infinite; will-change:transform}
 .page-hero::after{animation:drift 30s ease-in-out infinite}
 .page-hero-in > *{animation:riseIn .72s var(--ease) both}
 .page-hero-in .crumbs{animation-delay:.02s}
 .page-hero-in .facts {animation-delay:.3s}
+
+/* ── animated hero backdrop ────────────────────────────────────────────
+   Four moving layers, all transform/opacity only, all GPU-composited:
+
+     aurora  three large soft lights on different loops, so the hero is
+             never lit the same way twice
+     beams   a horizontal and a vertical line travelling the grid, which
+             is what makes the surface read as live circuitry
+     sheen   one slow diagonal pass of light across the whole hero
+     motes   particles rising, echoing the logo's climbing arrow
+
+   Nothing here animates a property that forces layout, and the whole
+   thing is behind the copy at z-index -2. It halves on tablets and
+   stops entirely on phones and under prefers-reduced-motion.
+   ──────────────────────────────────────────────────────────────────── */
+.hero-bg{position:absolute; inset:0; z-index:-2; overflow:hidden; pointer-events:none}
+
+/* — aurora — */
+.hero-bg .aurora{
+  position:absolute; border-radius:50%; will-change:transform;
+  mix-blend-mode:screen;
+}
+.hero-bg .a1{
+  width:min(78vw,1040px); aspect-ratio:1; left:-20%; top:-42%;
+  background:radial-gradient(circle, #2F6BF0 0%, #2F6BF066 32%, transparent 64%);
+  opacity:.5; animation:auroraA 24s ease-in-out infinite;
+}
+.hero-bg .a2{
+  width:min(52vw,680px); aspect-ratio:1; right:-14%; top:-26%;
+  background:radial-gradient(circle, #E9A93D 0%, #C9902E4D 34%, transparent 66%);
+  opacity:.3; animation:auroraB 31s ease-in-out infinite;
+}
+.hero-bg .a3{
+  width:min(70vw,900px); aspect-ratio:1; right:-10%; bottom:-48%;
+  background:radial-gradient(circle, #1B49C9 0%, #1B49C966 34%, transparent 66%);
+  opacity:.48; animation:auroraC 27s ease-in-out infinite;
+}
+@keyframes auroraA{
+  0%,100%{transform:translate3d(0,0,0) scale(1)}
+  34%    {transform:translate3d(9%,7%,0)  scale(1.14)}
+  67%    {transform:translate3d(-6%,12%,0) scale(.93)}
+}
+@keyframes auroraB{
+  0%,100%{transform:translate3d(0,0,0) scale(1)}
+  40%    {transform:translate3d(-11%,9%,0) scale(1.2)}
+  72%    {transform:translate3d(5%,-4%,0)  scale(.9)}
+}
+@keyframes auroraC{
+  0%,100%{transform:translate3d(0,0,0) scale(1)}
+  38%    {transform:translate3d(-9%,-8%,0) scale(1.1)}
+  70%    {transform:translate3d(7%,-3%,0)  scale(.95)}
+}
+
+/* — beams: a full-bleed element carrying a 1px line, translated a whole
+     viewport so the motion stays on the compositor — */
+.hero-bg .beam{position:absolute; inset:0; will-change:transform}
+.hero-bg .beam::before{content:""; position:absolute; background:currentColor}
+.hero-bg .beam-h{color:#7FB0FF; animation:beamDown 9s linear infinite}
+.hero-bg .beam-h::before{
+  left:0; right:0; top:0; height:1px;
+  background:linear-gradient(90deg, transparent, #7FB0FFB3 22%, #FFFFFF 50%, #7FB0FFB3 78%, transparent);
+  box-shadow:0 0 12px #4C8DFF80;
+}
+.hero-bg .beam-v{color:#EAB44F; animation:beamAcross 13s linear infinite; animation-delay:2.5s}
+.hero-bg .beam-v::before{
+  top:0; bottom:0; left:0; width:1px;
+  background:linear-gradient(180deg, transparent, #EAB44F99 26%, #FFE7B0 50%, #EAB44F99 74%, transparent);
+  box-shadow:0 0 12px #EAB44F66;
+}
+@keyframes beamDown  {from{transform:translate3d(0,-4%,0)} to{transform:translate3d(0,104%,0)}}
+@keyframes beamAcross{from{transform:translate3d(-4%,0,0)} to{transform:translate3d(104%,0,0)}}
+
+/* — sheen — */
+.hero-bg .sheen{
+  position:absolute; inset:-30% -60%; will-change:transform;
+  background:linear-gradient(108deg, transparent 40%, #7FB0FF1F 48%, #FFFFFF14 50%, #7FB0FF1F 52%, transparent 60%);
+  animation:sheen 14s ease-in-out infinite;
+}
+@keyframes sheen{
+  0%,100%{transform:translate3d(-26%,0,0)}
+  50%    {transform:translate3d(26%,0,0)}
+}
+
+/* — motes: they climb, like the arrow in the mark — */
+.hero-bg .motes{position:absolute; inset:0}
+.hero-bg .motes i{
+  position:absolute; bottom:-8px; width:3px; height:3px; border-radius:50%;
+  background:#8FBBFF; box-shadow:0 0 6px #4C8DFFCC; opacity:0;
+  animation:rise linear infinite; will-change:transform, opacity;
+}
+.hero-bg .motes i:nth-child(3n){background:#EAB44F; box-shadow:0 0 6px #EAB44FAA}
+.hero-bg .motes i:nth-child(4n){width:2px; height:2px}
+@keyframes rise{
+  0%  {transform:translate3d(0,0,0) scale(.5); opacity:0}
+  10% {opacity:.85}
+  85% {opacity:.45}
+  100%{transform:translate3d(14px,-102%,0) scale(1); opacity:0}
+}
+/* spread them across the width on their own clocks */
+.hero-bg .motes i:nth-child(1) {left:4%;  animation-duration:17s; animation-delay:0s}
+.hero-bg .motes i:nth-child(2) {left:11%; animation-duration:22s; animation-delay:3s}
+.hero-bg .motes i:nth-child(3) {left:19%; animation-duration:14s; animation-delay:6s}
+.hero-bg .motes i:nth-child(4) {left:27%; animation-duration:25s; animation-delay:1.5s}
+.hero-bg .motes i:nth-child(5) {left:34%; animation-duration:19s; animation-delay:8s}
+.hero-bg .motes i:nth-child(6) {left:42%; animation-duration:15s; animation-delay:4.5s}
+.hero-bg .motes i:nth-child(7) {left:50%; animation-duration:23s; animation-delay:10s}
+.hero-bg .motes i:nth-child(8) {left:58%; animation-duration:18s; animation-delay:2s}
+.hero-bg .motes i:nth-child(9) {left:66%; animation-duration:21s; animation-delay:7s}
+.hero-bg .motes i:nth-child(10){left:74%; animation-duration:16s; animation-delay:11s}
+.hero-bg .motes i:nth-child(11){left:82%; animation-duration:24s; animation-delay:5s}
+.hero-bg .motes i:nth-child(12){left:89%; animation-duration:20s; animation-delay:9s}
+.hero-bg .motes i:nth-child(13){left:95%; animation-duration:26s; animation-delay:13s}
+.hero-bg .motes i:nth-child(14){left:15%; animation-duration:28s; animation-delay:15s}
+
+/* tablets: keep the light, drop the fine detail */
+@media (max-width:900px){
+  .hero-bg .motes i:nth-child(n+8){display:none}
+  .hero-bg .sheen{display:none}
+}
+/* phones: the hero is lit, but nothing moves */
+@media (max-width:700px){
+  .hero-bg .aurora{animation:none}
+  .marquee-track{animation:none}
+  .hero-bg .beam,.hero-bg .motes{display:none}
+}
+
+/* ── the branch diagram ────────────────────────────────────────────── */
+.branch .wire{stroke-dasharray:var(--len,320); stroke-dashoffset:var(--len,320);
+  animation:trace 1.5s var(--ease-out) forwards}
+.branch .w1{--len:240; animation-delay:.55s}
+.branch .w2{--len:240; animation-delay:.68s}
+.branch .w3{--len:240; animation-delay:.81s}
+.branch .w4{--len:240; animation-delay:.94s}
+.branch .ring{transform-origin:center; animation:fadeIn 1s ease .35s both}
+.branch .ring-2{animation:fadeIn 1s ease .5s both, spin 70s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.branch .pip{animation:pulse 3.4s var(--ease) infinite; transform-origin:center; transform-box:fill-box}
+.branch .pip:nth-of-type(2){animation-delay:.5s}
+.branch .pip:nth-of-type(3){animation-delay:1s}
+.branch .pip:nth-of-type(4){animation-delay:1.5s}
+/* a packet that runs the wire, so the diagram reads as live */
+.branch .spark{
+  offset-path:var(--path); offset-rotate:0deg;
+  animation:travel 3.6s linear infinite, breathe 3.6s ease-in-out infinite;
+}
+.branch .spark.s2{animation-delay:.9s}
+.branch .spark.s3{animation-delay:1.8s}
+.branch .spark.s4{animation-delay:2.7s}
+.branch-core{animation:riseInCentred .8s var(--ease) .38s both}
+.branch-node{animation:riseInCentred .7s var(--ease) both}
+.branch-node.n1{animation-delay:1.05s}
+.branch-node.n2{animation-delay:1.16s}
+.branch-node.n3{animation-delay:1.27s}
+.branch-node.n4{animation-delay:1.38s}
+/* pointer parallax: site.js writes --px/--py, the page never reads layout */
+.branch{--px:0; --py:0}
+.branch-inner{
+  transform:translate3d(calc(var(--px) * 12px), calc(var(--py) * 12px), 0);
+  transition:transform .5s var(--ease-out); will-change:transform;
+}
+.branch-nodes{
+  position:absolute; inset:0;
+  transform:translate3d(calc(var(--px) * -18px), calc(var(--py) * -18px), 0);
+  transition:transform .5s var(--ease-out); will-change:transform;
+}
 
 /* ── scroll reveal ─────────────────────────────────────────────────── */
 .rv{opacity:0; transform:translate3d(0,var(--rise),0);
@@ -1830,12 +1999,17 @@ html::after{
    is free; on a phone it is battery. Entrance animations still play — only
    the infinite ones stop.                                                  */
 @media (max-width:700px){
-  .page-hero::after{animation:none; will-change:auto}
+  .hero::after,.page-hero::after{animation:none; will-change:auto}
   /* a full-viewport blend layer is re-composited on every scroll frame;
      the grain is the first thing worth giving up on a phone */
   html::after{display:none}
   body::after{background-size:auto, 100% 56px, 56px 100%}
+  .branch .ring-2{animation:fadeIn 1s ease .5s both}
+  .branch .spark{display:none}
+  .hero-bg .beam,.hero-bg .motes,.hero-bg .sheen{display:none}
+  .hero-bg .aurora{animation:none}
   .marquee-track{animation:none}
+  .branch .pip{animation:none; opacity:.8}
 }
 
 /* ── reduced motion: everything above is decoration ────────────────── */
@@ -1848,16 +2022,17 @@ html::after{
   .hero-copy > *,.hero-art,.page-hero-in > *,.mask > span{
     opacity:1 !important; transform:none !important;
   }
+  .branch-node,.branch-core{opacity:1 !important; transform:translate(-50%,-50%) !important}
+  .branch .wire{stroke-dashoffset:0 !important}
+  .branch .spark{display:none}
+  .hero-bg .beam,.hero-bg .motes,.hero-bg .sheen{display:none}
+  .hero-bg .aurora{animation:none}
   .marquee-track{animation:none}
   .spine .tick,.timeline::before{transform:scaleX(1) !important}
   .dg-bar{transform:scaleY(1) !important}
   .mock .equity{stroke-dashoffset:0 !important}
   .mock .equity-fill{opacity:1 !important}
-  .magnetic{transform:none !important}
-  .draft .s,.draft .dash{stroke-dashoffset:0 !important}
-  .draft .f{fill-opacity:var(--fo,1) !important}
-  .draft .t{opacity:1 !important}
-  .draft .lens{display:none}
+  .branch-inner,.branch-nodes,.magnetic{transform:none !important}
   .progress{display:none}
   .leaving{opacity:1}
 }
