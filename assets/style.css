@@ -242,6 +242,17 @@ h3{font-size:clamp(19px,1.5vw,23px); font-weight:700; letter-spacing:-.025em}
 .tag.bad{color:var(--bad); border-color:#F08A804D; background:var(--bad-soft)}
 .tag.blue{color:var(--blue); border-color:var(--blue-line); background:var(--blue-soft)}
 .tag.gold{color:var(--gold); border-color:var(--gold-line); background:var(--gold-soft)}
+/* an inline status marker — PORTVAX is in beta, so it is labelled wherever
+   it is listed beside a product that is already running */
+.soon{
+  display:inline-block; margin-left:9px; vertical-align:2px;
+  font-family:"JetBrains Mono",monospace; font-size:9px; font-weight:700;
+  letter-spacing:.13em; text-transform:uppercase; white-space:nowrap;
+  padding:3px 7px; border-radius:5px;
+  background:var(--gold-soft); border:1px solid var(--gold-line); color:var(--gold);
+}
+.idx-row{display:flex; align-items:center; gap:12px; flex-wrap:wrap}
+
 .chips{display:flex; flex-wrap:wrap; gap:7px}
 .chip{
   font-family:"JetBrains Mono",monospace; font-size:11px; letter-spacing:.02em;
@@ -350,7 +361,8 @@ body{padding-top:74px}
 .mega-link:hover .ic{background:#4C8DFF26; border-color:#4C8DFF66}
 .mega-link.is-gold .ic{background:var(--gold-soft); border-color:var(--gold-line); color:var(--gold)}
 .mega-link .txt b{display:block; font-size:15px; font-weight:700; letter-spacing:-.01em; color:var(--ink)}
-.mega-link .txt span{display:block; margin-top:4px; font-size:13px; line-height:1.45; color:var(--ink-3)}
+/* direct child only: the title line can carry its own inline markers */
+.mega-link .txt > span{display:block; margin-top:4px; font-size:13px; line-height:1.45; color:var(--ink-3)}
 .mega-foot{
   display:flex; align-items:center; justify-content:space-between; gap:14px;
   margin-top:8px; padding:13px 15px; border-radius:12px;
