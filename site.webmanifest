@@ -1,12 +1,12 @@
 {
-  "name": "Derovest — automation-first studio",
+  "name": "Derovest — products, software, automation",
   "short_name": "Derovest",
-  "description": "Derovest automates the repetitive work inside your business, cuts what it costs to run, and adds digital marketing when you're ready to grow.",
+  "description": "Derovest builds its own technology products, and helps businesses build software, automate repetitive work and extend their technology teams.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
-  "background_color": "#F7F8FA",
-  "theme_color": "#F7F8FA",
+  "background_color": "#05091A",
+  "theme_color": "#05091A",
   "lang": "en",
   "dir": "ltr",
   "icons": [

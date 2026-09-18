@@ -32,14 +32,14 @@
 <link rel="icon" href="/favicon-96.png" type="image/png" sizes="96x96">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="manifest" href="/site.webmanifest">
-<meta name="theme-color" content="#0F1B34">
+<meta name="theme-color" content="#05091A">
 <meta name="color-scheme" content="dark">
 
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/archivo.woff2?v=de2f1fe817" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/manrope.woff2?v=938c6e8019" crossorigin>
-<link rel="stylesheet" href="/assets/style.css?v=3e5b509c12">
-<noscript><style>.rv{opacity:1;transform:none}</style></noscript>
-<script src="/assets/site.js?v=0aae1a8974" defer></script>
+<link rel="stylesheet" href="/assets/style.css?v=7711b7a851">
+<noscript><style>.rv,[data-stagger]>*,.auto-task,.auto-pipe .pstep{opacity:1;transform:none}.spine .tick,.timeline::before{transform:scaleX(1)}.dg-bar{transform:scaleY(1)}.mock .equity{stroke-dashoffset:0}.mock .equity-fill{opacity:1}.switch-panels{display:block}.switch-panel{opacity:1;visibility:visible;transform:none;border-bottom:1px solid var(--line)}.switch-list{display:none}</style></noscript>
+<script src="/assets/site.js?v=5abf54484c" defer></script>
 
 <script type="application/ld+json">
 {
@@ -505,350 +505,558 @@
 <a class="skip" href="#main">Skip to content</a>
 <header class="nav" id="nav">
   <div class="wrap nav-in">
-    <a class="brand" href="/" aria-label="Derovest — home"><img class="mark" src="/assets/logo.png" alt="" width="208" height="190" decoding="async"><b>DEROVEST</b></a>
+    <a class="brand" href="/" aria-label="Derovest — home"><img class="mark" src="/assets/logo.png" alt="" width="208" height="190" fetchpriority="high" decoding="async"><b>DEROVEST</b></a>
     <nav class="nav-links" id="nav-links" aria-label="Primary">
-      <a href="/" aria-current="page">Home</a>
       <div class="nav-item">
-        <a href="/products">Products <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></a>
-        <div class="dropdown">
-          <a href="/products/mentivax">Mentivax<span>School management software. Less paperwork, more teaching.</span></a>
-          <a href="/products/portvax">PORTVAX<span>No-code platform to build, backtest and automate trading strategies.</span></a>
+        <a href="/products" data-nav="/products">Products <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></a>
+        <div class="mega">
+          <div class="mega-grid mega-2">
+            <a class="mega-link" href="/products/mentivax"><span class="ic">M</span><span class="txt"><b>Mentivax</b><span>School management and growth platform. Less paperwork, more teaching.</span></span></a>
+            <a class="mega-link is-gold" href="/products/portvax"><span class="ic">P</span><span class="txt"><b>PORTVAX</b><span>Build, backtest and automate trading strategies — without writing code.</span></span></a>
+          </div>
+          <div class="mega-foot">
+            <p>Two products Derovest builds, owns and runs itself.</p>
+            <a class="more" href="/products">All products <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
         </div>
       </div>
       <div class="nav-item">
-        <a href="/services">Services <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></a>
-        <div class="dropdown">
-          <a href="/services/software-development">Software Development<span>Build what you need without building a team from scratch.</span></a>
-          <a href="/services/technology-staffing">Technology Staffing<span>Contract professionals and hiring support, screened by engineers.</span></a>
-          <a href="/services/business-automation">Business Automation<span>Automate the manual work your team repeats every week.</span></a>
-          <a href="/services/seo">SEO Optimisation<span>Get found for what you actually sell.</span></a>
-          <a href="/services/server-cost-reduction">Server Cost Reduction<span>Cut the infrastructure bill without going offline.</span></a>
+        <a href="/services" data-nav="/services">Services <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></a>
+        <div class="mega">
+          <div class="mega-grid mega-2">
+            <a class="mega-link" href="/services/software-development"><span class="ic">01</span><span class="txt"><b>Software Development</b><span>Web apps, SaaS, mobile, APIs and MVPs — without building a team first.</span></span></a>
+            <a class="mega-link" href="/services/business-automation"><span class="ic">02</span><span class="txt"><b>Business Automation</b><span>Stop paying people to repeat the same task every week.</span></span></a>
+            <a class="mega-link" href="/services/technology-staffing"><span class="ic">03</span><span class="txt"><b>Technology Staffing</b><span>Contract professionals and hiring support, screened by engineers.</span></span></a>
+            <a class="mega-link" href="/services/server-cost-reduction"><span class="ic">04</span><span class="txt"><b>Cloud &amp; Cost Optimisation</b><span>Spend less keeping your software running, with nothing going dark.</span></span></a>
+            <a class="mega-link" href="/services/seo"><span class="ic">05</span><span class="txt"><b>SEO Optimisation</b><span>Get found for what you actually sell.</span></span></a>
+            <a class="mega-link is-gold" href="/services#how-we-work"><span class="ic">→</span><span class="txt"><b>How we work</b><span>Four steps, written scope, transparent pricing, clean handover.</span></span></a>
+          </div>
+          <div class="mega-foot">
+            <p>Not sure which one you need? Describe the problem, not the solution.</p>
+            <a class="more" href="/contact">Talk to Derovest <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
         </div>
       </div>
-      <a href="/about">About</a>
-      <a href="/contact">Contact</a>
+      <a href="/services#how-we-work" data-nav="/how">How we work</a>
+      <a href="/about" data-nav="/about">About</a>
+      <a href="/contact" data-nav="/contact">Contact</a>
+      <div class="nav-mob-cta">
+        <a class="btn btn-primary" href="/contact">Talk to Derovest <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+      <div class="nav-mob-meta">
+        <a href="/faq">FAQ</a>
+        <a href="https://www.linkedin.com/company/derovest" rel="me noopener" target="_blank">LinkedIn</a>
+        <a href="https://www.instagram.com/derovest.in" rel="me noopener" target="_blank">Instagram</a>
+        <a href="https://github.com/derovest" rel="me noopener" target="_blank">GitHub</a>
+      </div>
     </nav>
-    <a class="btn btn-primary btn-sm" href="/contact">Talk to Derovest</a>
+    <a class="btn btn-primary btn-sm nav-cta" href="/contact">Talk to Derovest</a>
     <button class="nav-toggle" id="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
-      <svg class="bars" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
-      <svg class="ex" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      <svg class="bars" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      <svg class="ex" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
     </button>
   </div>
 </header>
 <main id="main">
 
-<!-- ══ HERO — the five-second answer ══════════════════════ -->
+<!-- ══ HERO — the five-second answer ═══════════════════════════════════ -->
 <section class="hero">
   <div class="wrap hero-in">
-    <div>
+    <div class="hero-copy">
       <div class="eyebrow"><span class="bar"></span><span class="code-label">Derovest · Technology company</span></div>
-      <h1>Technology products.<br>Software solutions.<br><span class="alt">Business automation.</span></h1>
-      <p class="lede">We build our own technology products — <b>Mentivax and PORTVAX</b> — and we help other businesses <b>build software, hire technology talent, and automate the work their teams repeat</b>.</p>
-      <div class="cta-row">
-        <a class="btn btn-primary" href="/services">Explore our services <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        <a class="btn btn-ghost" href="/products">View our products</a>
+      <h1><span class="mask"><span>Building technology.</span></span><span class="mask"><span class="accent">Removing complexity.</span></span></h1>
+      <p class="lede">We build our own products, and we help businesses <b>build software</b>, <b>automate repetitive work</b> and <b>extend their technology teams</b>.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary btn-lg magnetic" href="/contact">Talk to Derovest <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="btn btn-ghost btn-lg" href="#what-we-do">Explore what we build</a>
       </div>
-      <div class="terms">
-        <div><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Software built without a full in-house team</span></div>
-        <div><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Technology people on contract, or screened for hiring</span></div>
-        <div><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Repetitive manual work automated</span></div>
-        <div><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Scope and price agreed in writing first</span></div>
+      <div class="hero-proof">
+        <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Two products of our own</span>
+        <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Scope and price agreed in writing first</span>
+        <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Remote, worldwide</span>
       </div>
     </div>
 
-    <div class="panel hero-panel" aria-label="What Derovest is: products it owns, and services it provides">
-      <div class="panel-bar">
-        <span class="file">what derovest is</span>
-        <span class="tag good">two sides</span>
-      </div>
-      <div class="scan" aria-hidden="true"></div>
-      <div class="map">
-        <div class="root"><b>DEROVEST</b><span>technology company</span></div>
-        <div class="rule"></div>
-        <div class="split">
-          <div class="leg">
-            <div class="t">Products we own</div>
-            <ul>
-              <li>Mentivax</li>
-              <li>PORTVAX</li>
-            </ul>
-          </div>
-          <div class="leg">
-            <div class="t">Services we provide</div>
-            <ul>
-              <li>Software development</li>
-              <li>Technology staffing</li>
-              <li>Business automation</li>
-              <li>SEO optimisation</li>
-              <li>Server cost reduction</li>
-            </ul>
-          </div>
+    <div class="hero-art">
+      <div class="branch" id="branch">
+        <div class="branch-inner">
+          <svg viewBox="0 0 600 600" aria-hidden="true" focusable="false">
+            <defs>
+              <linearGradient id="wireGrad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#7FB0FF" stop-opacity="1"/>
+                <stop offset="65%" stop-color="#4C8DFF" stop-opacity=".75"/>
+                <stop offset="100%" stop-color="#EAB44F" stop-opacity=".85"/>
+              </linearGradient>
+              <radialGradient id="coreGrad" cx="50%" cy="38%">
+                <stop offset="0%" stop-color="#1B2C5E"/>
+                <stop offset="100%" stop-color="#0A1128"/>
+              </radialGradient>
+            </defs>
+            <circle class="ring" cx="300" cy="300" r="122"/>
+            <circle class="ring ring-2" cx="300" cy="300" r="182"/>
+            <path class="wire w1" d="M258 272 C 220 240, 180 184, 126 138"/>
+            <path class="wire w2" d="M342 272 C 386 236, 440 196, 496 168"/>
+            <path class="wire w3" d="M342 328 C 388 364, 430 414, 484 450"/>
+            <path class="wire w4" d="M258 328 C 216 368, 176 428, 124 482"/>
+            <circle class="pip" cx="186" cy="200" r="3.5"/>
+            <circle class="pip" cx="424" cy="212" r="3.5"/>
+            <circle class="pip" cx="420" cy="392" r="3.5"/>
+            <circle class="pip" cx="184" cy="400" r="3.5"/>
+            <circle class="spark s1" r="2.8" fill="#8FBBFF" style="--path:path('M258 272 C 220 240, 180 184, 126 138')"/>
+            <circle class="spark s2" r="2.8" fill="#8FBBFF" style="--path:path('M342 272 C 386 236, 440 196, 496 168')"/>
+            <circle class="spark s3" r="2.8" fill="#EAB44F" style="--path:path('M342 328 C 388 364, 430 414, 484 450')"/>
+            <circle class="spark s4" r="2.8" fill="#8FBBFF" style="--path:path('M258 328 C 216 368, 176 428, 124 482')"/>
+          </svg>
+        </div>
+        <div class="branch-core">
+          <img src="/assets/logo.png" alt="" width="208" height="190" fetchpriority="high" decoding="async">
+          <span>Derovest</span>
+        </div>
+        <div class="branch-nodes">
+          <a class="branch-node n1 is-gold" href="/products" style="left:19%; top:20%"><b>Products</b><span>Built &amp; owned</span></a>
+          <a class="branch-node n2" href="/services/software-development" style="left:83%; top:27%"><b>Software</b><span>Built for you</span></a>
+          <a class="branch-node n3" href="/services/business-automation" style="left:80%; top:75%"><b>Automation</b><span>Work removed</span></a>
+          <a class="branch-node n4" href="/services/technology-staffing" style="left:20%; top:80%"><b>Talent</b><span>Capacity added</span></a>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══ §01 THE TWO PILLARS ════════════════════════════════ -->
+<!-- ══ §01 ONE COMPANY. TWO SIDES. ═════════════════════════════════════ -->
 <section class="band" id="what-we-do">
   <div class="wrap spine">
-    <div class="gutter"><div class="stick"><span class="tick"></span><span class="code-label">§01<br>What we do</span></div></div>
+    <div class="gutter-col"><div class="stick"><span class="tick"></span><span class="code-label">§01<br>What we do</span></div></div>
     <div>
-      <h2 class="rv">What is Derovest?</h2>
-      <p class="answer rv"><b>Derovest is a technology company with two sides.</b> It builds and owns its own software products — <b>Mentivax</b>, school management software, and <b>PORTVAX</b>, a no-code trading platform. It also provides technology services to other businesses: <b>software development</b>, <b>technology staffing</b>, <b>business automation</b>, <b>SEO optimisation</b> and <b>server cost reduction</b>. Derovest works with software companies, startups and non-technology businesses, remotely, worldwide.</p>
-      <p class="sec-lede rv">Those two sides are worth keeping separate, because most visitors only need one of them. Here is which is which.</p>
+      <h2 class="rv">One company.<br>Two sides.</h2>
+      <p class="answer rv"><b>Derovest is a technology company with two sides.</b> It builds and owns its own software products — <b>Mentivax</b>, a school management and growth platform, and <b>PORTVAX</b>, a no-code trading platform. It also works as the technology partner for other businesses: <b>software development</b>, <b>business automation</b>, <b>technology staffing</b>, <b>cloud and cost optimisation</b> and <b>SEO</b>. Derovest works with startups, SMEs and software teams, remotely, worldwide.</p>
 
-      <div class="pillars rv" data-stagger>
-        <div class="pillar">
-          <span class="k">Side one</span>
-          <h3>Products</h3>
-          <p>Technology we build and own. Derovest develops its own products to solve real-world problems, and we run them ourselves.</p>
-          <ul>
-            <li><a href="/products/mentivax"><b>Mentivax</b><span>Learn more →</span></a></li>
-            <li><a href="/products/portvax"><b>PORTVAX</b><span>Learn more →</span></a></li>
+      <div class="sides rv">
+        <div class="side side-build">
+          <span class="side-num">Side one</span>
+          <h3>Products we build</h3>
+          <p>Our own technology, built and run by us. We carry the same decisions our clients do.</p>
+          <ul class="side-list">
+            <li><a href="/products/mentivax">
+              <span class="ic">M</span>
+              <span><b>Mentivax</b><small>School management and growth platform</small></span>
+              <svg class="arw" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a></li>
+            <li><a href="/products/portvax">
+              <span class="ic">P</span>
+              <span><b>PORTVAX</b><small>Build, backtest and automate trading strategies</small></span>
+              <svg class="arw" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a></li>
           </ul>
-          <div class="foot"><a class="more" href="/products" style="margin-top:0">All products <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+          <div class="side-foot">
+            <p>Both run in production, with real users and real running costs.</p>
+            <a class="more gold" href="/products">All products <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
         </div>
-        <div class="pillar">
-          <span class="k">Side two</span>
-          <h3>Technology services</h3>
-          <p>Technology work for other businesses, built around practical needs rather than a catalogue of buzzwords.</p>
-          <ul>
-            <li><a href="/services/software-development"><b>Software Development</b><span>Build what you need without building a team from scratch.</span></a></li>
-            <li><a href="/services/technology-staffing"><b>Technology Staffing</b><span>Contract professionals and hiring support, screened by engineers.</span></a></li>
-            <li><a href="/services/business-automation"><b>Business Automation</b><span>Automate the manual work your team repeats every week.</span></a></li>
-            <li><a href="/services/seo"><b>SEO Optimisation</b><span>Get found for what you actually sell.</span></a></li>
-            <li><a href="/services/server-cost-reduction"><b>Server Cost Reduction</b><span>Cut the infrastructure bill without going offline.</span></a></li>
+        <div class="side side-serve">
+          <span class="side-num">Side two</span>
+          <h3>Technology we provide</h3>
+          <p>We become the technology execution partner for businesses that need software, automation or engineering capacity.</p>
+          <ul class="side-list">
+            <li><a href="/services/software-development">
+              <span class="ic">01</span>
+              <span><b>Software Development</b><small>Web, SaaS, mobile, backend and APIs</small></span>
+              <svg class="arw" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a></li>
+            <li><a href="/services/business-automation">
+              <span class="ic">02</span>
+              <span><b>Business Automation</b><small>The work your team repeats every week</small></span>
+              <svg class="arw" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a></li>
+            <li><a href="/services/technology-staffing">
+              <span class="ic">03</span>
+              <span><b>Technology Staffing</b><small>Contract capacity and technical screening</small></span>
+              <svg class="arw" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a></li>
+            <li><a href="/services/server-cost-reduction">
+              <span class="ic">04</span>
+              <span><b>Cloud &amp; Cost Optimisation</b><small>Spend less keeping your software running</small></span>
+              <svg class="arw" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a></li>
+            <li><a href="/services/seo">
+              <span class="ic">05</span>
+              <span><b>SEO Optimisation</b><small>Get found for what you actually sell</small></span>
+              <svg class="arw" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a></li>
           </ul>
-          <div class="foot"><a class="more" href="/services" style="margin-top:0">All services <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+          <div class="side-foot">
+            <p>Most engagements start in one area and stay there.</p>
+            <a class="more" href="/services">All services <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
         </div>
+      </div>
+
+      <div class="sides-note rv">
+        <p>We build products ourselves. <b>That changes how we build yours.</b></p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══ §02 PRODUCTS ═══════════════════════════════════════ -->
+<!-- ══ §02 PRODUCTS SHOWCASE ═══════════════════════════════════════════ -->
 <section class="band rule" id="products">
   <div class="wrap spine">
-    <div class="gutter"><div class="stick"><span class="tick"></span><span class="code-label">§02<br>Products</span></div></div>
-    <div>
+    <div class="gutter-col"><div class="stick"><span class="tick"></span><span class="code-label">§02<br>Products</span></div></div>
+    <div class="band-head">
       <h2 class="rv">Technology we build and own.</h2>
-      <p class="sec-lede rv">Derovest develops its own products alongside the client work. It keeps us honest — we make the same trade-offs our clients do.</p>
-      <div class="prods rv" data-stagger>
-        <article class="prod">
-          <div class="prod-top">
-            <span class="prod-badge" aria-hidden="true">M</span>
-            <h3>Mentivax</h3>
-            <span class="tag">For schools</span>
-          </div>
-          <div class="prod-body">
-            <p class="prod-tag">Less paperwork, more teaching.</p>
-            <p>School management software that handles fees, students, attendance and parent communication — where you ask for what you need in plain language.</p>
-            <a class="more" href="/products/mentivax">Learn more <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-          </div>
-        </article>
-        <article class="prod">
-          <div class="prod-top">
-            <span class="prod-badge" aria-hidden="true">P</span>
-            <h3>PORTVAX</h3>
-            <span class="tag">For traders</span>
-          </div>
-          <div class="prod-body">
-            <p class="prod-tag">Build. Backtest. Trade — your way.</p>
-            <p>A no-code platform for building, testing and automating your own trading strategies, without handing over control of the logic.</p>
-            <a class="more" href="/products/portvax">Learn more <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-          </div>
-        </article>
-      </div>
+      <p class="sec-lede rv">Two products, running in the real world, with real users and real costs. Building them is what keeps our advice honest.</p>
     </div>
+  </div>
+
+  <div class="showcase">
+    <article class="show-item" id="mentivax">
+      <div class="wrap show-in">
+        <div class="show-copy rv">
+          <span class="idx">Product 01 — for schools</span>
+          <h3>Mentivax</h3>
+          <p class="role">School Management &amp; Growth Platform</p>
+          <p class="slogan">“Less paperwork, more teaching.”</p>
+          <p>Fees, students, attendance, staff and parent communication in one place, instead of spread across spreadsheets, registers and someone's memory. You ask for what you need in plain language, and it answers.</p>
+          <div class="show-mods">
+            <span>Students</span><span>Attendance</span><span>Fees</span><span>Payroll</span><span>Staff leave</span><span>Reports</span><span>WhatsApp</span><span>Transport</span>
+          </div>
+          <div class="show-cta">
+            <a class="btn btn-primary" href="/products/mentivax">Explore Mentivax <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            <a class="btn btn-ghost" href="https://mentivax.com/" target="_blank" rel="noopener">mentivax.com</a>
+          </div>
+        </div>
+
+        <div class="mock mock-light rv" aria-hidden="true">
+          <div class="mock-bar"><span class="mock-dots"><i></i><i></i><i></i></span><span class="mock-url">mentivax.com/dashboard</span></div>
+          <div class="mock-body">
+            <div class="m-head">
+              <span class="logo">M</span><b>Mentivax</b><span class="term">Term 2 · Grade 8-A</span>
+            </div>
+            <div class="m-stats">
+              <div class="m-stat"><div class="l">Students</div><div class="v">412</div></div>
+              <div class="m-stat"><div class="l">Present today</div><div class="v">396<em>96%</em></div></div>
+              <div class="m-stat"><div class="l">Fees pending</div><div class="v">18</div></div>
+            </div>
+            <div class="m-rows">
+              <div class="m-row"><span class="who">Aarthi Venkatesh</span><span class="cls">8-A</span><span class="m-pill paid">Fees paid</span></div>
+              <div class="m-row"><span class="who">Rahul Krishnan</span><span class="cls">8-A</span><span class="m-pill due">Due 12 Apr</span></div>
+              <div class="m-row"><span class="who">Meera Suresh</span><span class="cls">8-B</span><span class="m-pill present">Present</span></div>
+            </div>
+            <div class="m-ask">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+              <span>Which students in Grade 8 still have fees pending?<span class="cursor"></span></span>
+            </div>
+            <p class="m-note">Illustrative interface with sample data — not a real school's records.</p>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="show-item" id="portvax">
+      <div class="wrap show-in">
+        <div class="show-copy rv">
+          <span class="idx">Product 02 — for traders</span>
+          <h3>PORTVAX</h3>
+          <p class="role">Trading strategy platform</p>
+          <p class="slogan">“Build. Backtest. Trade — your way.”</p>
+          <p>Build a strategy visually, test it against historical data, run it on paper in live market conditions, then automate it through your own broker. No code, and the logic stays yours — you can export it and take it with you.</p>
+          <div class="show-mods">
+            <span>Build strategy</span><span>Backtest</span><span>Paper trade</span><span>Connect brokers</span><span>Automate</span><span>Export</span>
+          </div>
+          <div class="show-cta">
+            <a class="btn btn-gold" href="/products/portvax">Explore PORTVAX <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            <a class="btn btn-ghost" href="https://portvax.com/" target="_blank" rel="noopener">portvax.com</a>
+          </div>
+        </div>
+
+        <div class="mock mock-dark rv" aria-hidden="true">
+          <div class="mock-bar"><span class="mock-dots"><i></i><i></i><i></i></span><span class="mock-url">portvax.com/strategy/backtest</span></div>
+          <div class="mock-body">
+            <div class="p-head"><span class="logo">P</span><b>PORTVAX</b><span class="mode">Paper trading</span></div>
+            <div class="p-flow">
+              <span class="p-node">BUILD</span><i>→</i>
+              <span class="p-node">BACKTEST</span><i>→</i>
+              <span class="p-node">PAPER</span><i>→</i>
+              <span class="p-node">BROKER</span>
+            </div>
+            <div class="p-chart">
+              <svg viewBox="0 0 440 150" preserveAspectRatio="none" role="presentation">
+                <defs>
+                  <linearGradient id="eqFill" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#4C8DFF" stop-opacity=".34"/>
+                    <stop offset="100%" stop-color="#4C8DFF" stop-opacity="0"/>
+                  </linearGradient>
+                </defs>
+                <line class="grid-l" x1="0" y1="36" x2="440" y2="36"/>
+                <line class="grid-l" x1="0" y1="75" x2="440" y2="75"/>
+                <line class="grid-l" x1="0" y1="114" x2="440" y2="114"/>
+                <path class="equity-fill" d="M0 126 L36 112 L74 118 L112 92 L150 99 L188 74 L226 82 L264 58 L302 66 L340 44 L378 52 L416 30 L440 26 L440 150 L0 150 Z"/>
+                <path class="bench" d="M0 130 L74 124 L150 118 L226 108 L302 100 L378 90 L440 84"/>
+                <path class="equity" d="M0 126 L36 112 L74 118 L112 92 L150 99 L188 74 L226 82 L264 58 L302 66 L340 44 L378 52 L416 30 L440 26"/>
+              </svg>
+            </div>
+            <div class="p-legend">
+              <span><i style="background:#4C8DFF"></i>Strategy</span>
+              <span><i style="background:#3A466B"></i>Benchmark</span>
+            </div>
+            <div class="p-stats">
+              <div class="p-stat"><div class="l">Period tested</div><div class="v">10 yrs</div></div>
+              <div class="p-stat"><div class="l">Execution</div><div class="v">Isolated</div></div>
+              <div class="p-stat"><div class="l">Strategy</div><div class="v">Exportable</div></div>
+            </div>
+            <p class="p-note">Illustrative interface. Backtesting is a test against historical data, not a prediction — PORTVAX makes no return claims.</p>
+          </div>
+        </div>
+      </div>
+    </article>
   </div>
 </section>
 
-<!-- ══ §03 SERVICES ═══════════════════════════════════════ -->
+<!-- ══ §03 SERVICES ════════════════════════════════════════════════════ -->
 <section class="band rule" id="services">
   <div class="wrap spine">
-    <div class="gutter"><div class="stick"><span class="tick"></span><span class="code-label">§03<br>Services</span></div></div>
+    <div class="gutter-col"><div class="stick"><span class="tick"></span><span class="code-label">§03<br>Services</span></div></div>
     <div>
-      <h2 class="rv">Technology services built<br>around practical business needs.</h2>
-      <p class="sec-lede rv">Five areas. Most engagements start in one of them and stay there — you do not have to buy the whole list.</p>
-      <div class="svc-list rv" data-stagger>
-        <article class="svc-item" id="software-development">
-          <span class="num">01</span>
-          <div>
-            <h3><a href="/services/software-development" style="text-decoration:none">Software Development</a></h3>
-            <div class="who">For companies that need software built or improved</div>
-            <p>Build what you need without building a large development team from scratch.</p>
-          </div>
-          <ul>
-            <li>Web applications and internal business software</li>
-            <li>Custom software built around how you already work</li>
-            <li>MVPs for startups that need something real in front of users</li>
-            <li>Maintenance and enhancement of software you already own</li>
-          </ul>
-        </article>
-        <article class="svc-item" id="technology-staffing">
-          <span class="num">02</span>
-          <div>
-            <h3><a href="/services/technology-staffing" style="text-decoration:none">Technology Staffing</a></h3>
-            <div class="who">For companies that need technology professionals</div>
-            <p>Technology talent through contract and hiring models, screened by people who can read code.</p>
-          </div>
-          <ul>
-            <li>Contract professionals for a defined period or project</li>
-            <li>Support identifying and evaluating candidates for permanent roles</li>
-            <li>Technical screening before candidates reach your interview stage</li>
-            <li>Collaboration with recruitment partners who already hold candidate pools</li>
-          </ul>
-        </article>
-        <article class="svc-item" id="business-automation">
-          <span class="num">03</span>
-          <div>
-            <h3><a href="/services/business-automation" style="text-decoration:none">Business Automation</a></h3>
-            <div class="who">For businesses that want to reduce repetitive manual work</div>
-            <p>If your team repeatedly does the same manual task, we can look at whether technology can do it instead.</p>
-          </div>
-          <ul>
-            <li>Repetitive data entry between systems</li>
-            <li>Manual reporting and spreadsheet-based workflows</li>
-            <li>Repetitive administrative and back-office tasks</li>
-            <li>Approval and hand-off processes that rely on someone remembering</li>
-          </ul>
-        </article>
-        <article class="svc-item" id="seo">
-          <span class="num">04</span>
-          <div>
-            <h3><a href="/services/seo" style="text-decoration:none">SEO Optimisation</a></h3>
-            <div class="who">For businesses that want to be found in search</div>
-            <p>Get found for what you actually sell, and know which pages are doing the work.</p>
-          </div>
-          <ul>
-            <li>Technical audit: indexing, crawling and what is blocking them</li>
-            <li>Titles, descriptions and heading structure that match real queries</li>
-            <li>Structured data so search engines understand what you are</li>
-            <li>Site structure and internal linking that spreads authority</li>
-          </ul>
-        </article>
-        <article class="svc-item" id="server-cost-reduction">
-          <span class="num">05</span>
-          <div>
-            <h3><a href="/services/server-cost-reduction" style="text-decoration:none">Server Cost Reduction</a></h3>
-            <div class="who">For teams paying more than they need to keep things running</div>
-            <p>Cut what your infrastructure costs, with changes staged so your service stays up.</p>
-          </div>
-          <ul>
-            <li>Cloud and hosting bills read line by line, with what each line is for</li>
-            <li>Idle, oversized, duplicated and forgotten resources identified</li>
-            <li>Right-sizing based on measured usage, not on guesswork</li>
-            <li>Committed and reserved pricing applied where it genuinely pays back</li>
-          </ul>
-        </article>
+      <div class="band-head">
+        <h2 class="rv">Your technology team,<br>when you need one.</h2>
+        <p class="sec-lede rv">Five areas. Most engagements start in one of them and stay there — you don't have to buy the whole list.</p>
       </div>
-      <a class="more rv" href="/services">How each service works <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+
+      <div class="switch rv">
+        <ul class="switch-list" id="svc-switch" role="tablist" aria-label="Derovest services">
+          <li role="presentation"><button class="switch-btn" type="button" role="tab" id="tab-dev" aria-controls="panel-dev" aria-selected="true">
+            <span class="n">01</span><span class="t">Software Development</span>
+            <svg class="arw" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button></li>
+          <li role="presentation"><button class="switch-btn" type="button" role="tab" id="tab-auto" aria-controls="panel-auto" aria-selected="false">
+            <span class="n">02</span><span class="t">Business Automation</span>
+            <svg class="arw" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button></li>
+          <li role="presentation"><button class="switch-btn" type="button" role="tab" id="tab-staff" aria-controls="panel-staff" aria-selected="false">
+            <span class="n">03</span><span class="t">Technology Staffing</span>
+            <svg class="arw" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button></li>
+          <li role="presentation"><button class="switch-btn" type="button" role="tab" id="tab-cloud" aria-controls="panel-cloud" aria-selected="false">
+            <span class="n">04</span><span class="t">Cloud &amp; Cost Optimisation</span>
+            <svg class="arw" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button></li>
+          <li role="presentation"><button class="switch-btn" type="button" role="tab" id="tab-seo" aria-controls="panel-seo" aria-selected="false">
+            <span class="n">05</span><span class="t">SEO Optimisation</span>
+            <svg class="arw" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button></li>
+        </ul>
+
+        <div class="switch-stage">
+          <div class="switch-panels" id="svc-panels">
+            <section class="switch-panel" role="tabpanel" id="panel-dev" aria-labelledby="tab-dev" data-active="true">
+              <h3>Software Development</h3>
+              <p class="for">For companies that need software built or improved</p>
+              <p>You bring the problem, we bring the engineering. Web applications, SaaS, mobile, backend and APIs — plus integrations, modernisation and maintenance of software you already own.</p>
+              <div class="diagram">
+                <div class="dg-row">
+                  <div class="dg-step"><span class="l">01</span><span class="v">Idea</span></div>
+                  <svg class="dg-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                  <div class="dg-step"><span class="l">02</span><span class="v">Scope</span></div>
+                  <svg class="dg-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                  <div class="dg-step on"><span class="l">03</span><span class="v">Build</span></div>
+                  <svg class="dg-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                  <div class="dg-step"><span class="l">04</span><span class="v">Ship</span></div>
+                </div>
+                <p class="dg-caption">Visible increments · code and accounts in your name</p>
+              </div>
+              <a class="more" href="/services/software-development">How software development works <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            </section>
+
+            <section class="switch-panel" role="tabpanel" id="panel-auto" aria-labelledby="tab-auto" data-active="false">
+              <h3>Business Automation</h3>
+              <p class="for">For businesses that want repetitive manual work gone</p>
+              <p>If your team repeats it every week, there's a good chance we can automate it. Data entry between systems, reports rebuilt by hand, approvals that rely on someone remembering.</p>
+              <div class="diagram">
+                <div class="dg-row">
+                  <div class="dg-step"><span class="l">Today</span><span class="v">Manual tasks</span></div>
+                  <svg class="dg-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                  <div class="dg-step"><span class="l">Map</span><span class="v">One workflow</span></div>
+                  <svg class="dg-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                  <div class="dg-step on"><span class="l">After</span><span class="v">Runs itself</span></div>
+                </div>
+                <p class="dg-caption">Your team handles the exceptions · software handles the repetition</p>
+              </div>
+              <a class="more" href="/services/business-automation">How automation works <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            </section>
+
+            <section class="switch-panel" role="tabpanel" id="panel-staff" aria-labelledby="tab-staff" data-active="false">
+              <h3>Technology Staffing</h3>
+              <p class="for">For companies that need technology professionals</p>
+              <p>Contract professionals when you need capacity now, and technical screening when you're hiring permanently — so only candidates worth interviewing reach your team.</p>
+              <div class="diagram">
+                <div class="dg-row">
+                  <div class="dg-step"><span class="l">01</span><span class="v">Requirement</span></div>
+                  <svg class="dg-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                  <div class="dg-step on"><span class="l">02</span><span class="v">Technical screening</span></div>
+                  <svg class="dg-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                  <div class="dg-step"><span class="l">03</span><span class="v">Shortlist</span></div>
+                  <svg class="dg-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                  <div class="dg-step"><span class="l">04</span><span class="v">Onboard</span></div>
+                </div>
+                <p class="dg-caption">Screened by people who can read code, before they reach you</p>
+              </div>
+              <a class="more" href="/services/technology-staffing">How staffing works <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            </section>
+
+            <section class="switch-panel" role="tabpanel" id="panel-cloud" aria-labelledby="tab-cloud" data-active="false">
+              <h3>Cloud &amp; Cost Optimisation</h3>
+              <p class="for">For teams paying more than they need to keep things running</p>
+              <p>Spend less keeping your software running. We read the bill line by line, measure what is actually used, and remove the difference in stages — with a way back at every step.</p>
+              <div class="diagram">
+                <div class="dg-bars">
+                  <div class="dg-bar" style="height:96%"></div>
+                  <div class="dg-bar cut" style="height:78%"></div>
+                  <div class="dg-bar" style="height:64%"></div>
+                  <div class="dg-bar cut" style="height:52%"></div>
+                  <div class="dg-bar keep" style="height:40%"></div>
+                  <div class="dg-bar keep" style="height:34%"></div>
+                </div>
+                <p class="dg-caption">Idle · oversized · duplicated · forgotten — measured, then staged with a rollback</p>
+              </div>
+              <a class="more" href="/services/server-cost-reduction">How cost optimisation works <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            </section>
+
+            <section class="switch-panel" role="tabpanel" id="panel-seo" aria-labelledby="tab-seo" data-active="false">
+              <h3>SEO Optimisation</h3>
+              <p class="for">For businesses that want to be found in search</p>
+              <p>Most sites don't lose search traffic because of the writing. They lose it because search engines can't read the structure, or the pages are slow. We fix the mechanics first, then the content.</p>
+              <div class="diagram">
+                <div class="dg-row">
+                  <div class="dg-step"><span class="l">01</span><span class="v">Site</span></div>
+                  <svg class="dg-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                  <div class="dg-step on"><span class="l">02</span><span class="v">Crawl &amp; index</span></div>
+                  <svg class="dg-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                  <div class="dg-step"><span class="l">03</span><span class="v">Search</span></div>
+                  <svg class="dg-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                  <div class="dg-step gold"><span class="l">04</span><span class="v">Found</span></div>
+                </div>
+                <p class="dg-caption">Technical audit · structured data · internal linking · Core Web Vitals</p>
+              </div>
+              <a class="more" href="/services/seo">How SEO works <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            </section>
+          </div>
+        </div>
+      </div>
+
+      <div class="switch-foot rv">
+        <a class="more" href="/services">See all five services in detail <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
     </div>
   </div>
 </section>
 
-
-<!-- ══ §04 WHY ════════════════════════════════════════════ -->
-<section class="band rule" id="why">
+<!-- ══ §04 AUTOMATION STORY ════════════════════════════════════════════ -->
+<section class="band rule" id="automation">
   <div class="wrap spine">
-    <div class="gutter"><div class="stick"><span class="tick"></span><span class="code-label">§04<br>Why us</span></div></div>
+    <div class="gutter-col"><div class="stick"><span class="tick"></span><span class="code-label">§04<br>Automation</span></div></div>
     <div>
-      <h2 class="rv">Why Derovest.</h2>
-      <div class="reasons rv" data-stagger>
-        <div class="reason">
-          <h3>Practical technology</h3>
-          <p>We build around the business problem in front of us, not around whatever is currently fashionable in engineering.</p>
+      <div class="band-head">
+        <h2 class="rv">Still doing this manually?</h2>
+        <p class="sec-lede rv">Most businesses have a handful of processes that quietly consume hours every week. Here is what one of them usually looks like — and what it looks like afterwards.</p>
+      </div>
+
+      <div class="auto-wrap">
+        <div class="auto-before">
+          <div class="auto-task"><span class="day">Mon</span><span class="what">Download the spreadsheet, clean it up</span><span class="cost">manual</span></div>
+          <div class="auto-task"><span class="day">Mon</span><span class="what">Copy the values into the CRM</span><span class="cost">manual</span></div>
+          <div class="auto-task"><span class="day">Tue</span><span class="what">Rebuild the same report by hand</span><span class="cost">manual</span></div>
+          <div class="auto-task"><span class="day">Tue</span><span class="what">Email it to four people</span><span class="cost">manual</span></div>
+          <div class="auto-task"><span class="day">Wed</span><span class="what">Update the other system so they agree</span><span class="cost">manual</span></div>
+          <div class="auto-task"><span class="day">Thu</span><span class="what">Chase the approval that nobody remembered</span><span class="cost">manual</span></div>
+          <p class="auto-loop"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 0 1 15.5-6.2L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15.5 6.2L3 16"/><path d="M3 21v-5h5"/></svg>and again next week</p>
         </div>
-        <div class="reason">
-          <h3>Lean development</h3>
-          <p>We try to build the smallest thing that solves the problem properly, and we say clearly what we are leaving out.</p>
-        </div>
-        <div class="reason">
-          <h3>Flexible talent</h3>
-          <p>Contract professionals, hiring support, or both — sized to the requirement rather than to a minimum contract.</p>
-        </div>
-        <div class="reason">
-          <h3>Automation first</h3>
-          <p>Before building something new, we look at whether the repetitive work can simply stop being done by a person.</p>
-        </div>
-        <div class="reason">
-          <h3>Product mindset</h3>
-          <p>We build and own our own products, so we make the same trade-offs you do — not just the ones a supplier can bill for.</p>
+
+        <div class="auto-after">
+          <span class="k">After</span>
+          <h3>One workflow that runs itself.</h3>
+          <div class="auto-pipe">
+            <div class="pstep"><span class="dot">1</span><span class="txt"><b>It triggers itself</b><span>On a schedule, or the moment the source data changes.</span></span></div>
+            <div class="pstep"><span class="dot">2</span><span class="txt"><b>Systems stay in step</b><span>Data moves between the tools you already pay for, in one direction, with one source of truth.</span></span></div>
+            <div class="pstep"><span class="dot">3</span><span class="txt"><b>The report writes itself</b><span>Built and delivered without anyone rebuilding it.</span></span></div>
+            <div class="pstep"><span class="dot">4</span><span class="txt"><b>Only exceptions surface</b><span>A person is asked when something genuinely needs a decision.</span></span></div>
+          </div>
+          <div class="auto-result">
+            <p><b>Your team handles the exceptions.</b> Software handles the repetition.</p>
+            <a class="btn btn-primary" href="/contact">Show us a repetitive process <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══ §05 HOW WE WORK ════════════════════════════════════ -->
+<!-- ══ §05 HOW WE WORK ═════════════════════════════════════════════════ -->
 <section class="band rule" id="how">
   <div class="wrap spine">
-    <div class="gutter"><div class="stick"><span class="tick"></span><span class="code-label">§05<br>How we work</span></div></div>
+    <div class="gutter-col"><div class="stick"><span class="tick"></span><span class="code-label">§05<br>How we work</span></div></div>
     <div>
-      <h2 class="rv">Four steps, and no six-week<br>discovery phase.</h2>
-      <div class="steps rv" data-stagger>
-        <div class="step">
-          <span class="n">STEP 01</span>
-          <h3>Talk</h3>
-          <p>A short conversation about what you actually need. If we are not the right people for it, we will say so.</p>
-        </div>
-        <div class="step">
-          <span class="n">STEP 02</span>
-          <h3>Scope and price</h3>
-          <p>Written scope, a price, and dates. Agreed before work starts so there are no discoveries later.</p>
-        </div>
-        <div class="step">
-          <span class="n">STEP 03</span>
-          <h3>Build or staff</h3>
-          <p>Software gets built in visible increments. Staffing requirements get screened and shortlisted.</p>
-        </div>
-        <div class="step">
-          <span class="n">STEP 04</span>
-          <h3>Hand over</h3>
-          <p>Code, documentation and accounts in your name. Support if you want it, a clean exit if you do not.</p>
-        </div>
+      <div class="band-head">
+        <h2 class="rv">Four steps, and no<br>six-week discovery phase.</h2>
+      </div>
+      <div class="timeline">
+        <div class="tl-step"><span class="dot"></span><span class="n">Step 01</span><h3>Understand</h3><p>A short conversation about what you actually need. If we're not the right people for it, we'll say so.</p></div>
+        <div class="tl-step"><span class="dot"></span><span class="n">Step 02</span><h3>Scope</h3><p>Written scope, a price, and dates — agreed before work starts, so there are no discoveries later.</p></div>
+        <div class="tl-step"><span class="dot"></span><span class="n">Step 03</span><h3>Build</h3><p>Software is built in visible increments. Staffing requirements get screened and shortlisted.</p></div>
+        <div class="tl-step"><span class="dot"></span><span class="n">Step 04</span><h3>Improve</h3><p>Code, documentation and accounts in your name. Support if you want it, a clean exit if you don't.</p></div>
+      </div>
+      <div class="process-terms rv" data-stagger>
+        <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Direct communication, no account manager in between</span>
+        <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Written scope before work starts</span>
+        <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Transparent pricing</span>
+        <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Iterative delivery</span>
+        <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Clean handover</span>
+        <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Ongoing support available</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══ §06 WHO WE HELP ════════════════════════════════════ -->
+<!-- ══ §06 WHO WE WORK WITH ════════════════════════════════════════════ -->
 <section class="band rule" id="who">
   <div class="wrap spine">
-    <div class="gutter"><div class="stick"><span class="tick"></span><span class="code-label">§06<br>Who we help</span></div></div>
+    <div class="gutter-col"><div class="stick"><span class="tick"></span><span class="code-label">§06<br>Who we help</span></div></div>
     <div>
-      <h2 class="rv">Who we work with.</h2>
-      <p class="sec-lede rv">Companies that need technology done well, without needing to build a technology department to get it.</p>
-      <div class="who-grid rv" data-stagger>
-        <div class="who-card">
-          <h3>Software &amp; technology companies</h3>
-          <p>You already build things. You need more capacity, or people you can trust to assess technical talent.</p>
-          <ul>
-            <li>Additional developers on contract</li>
-            <li>Technology professionals for a defined project</li>
-            <li>Technical screening support when hiring</li>
-            <li>Extra software development capacity</li>
-          </ul>
-        </div>
-        <div class="who-card">
+      <div class="band-head">
+        <h2 class="rv">Who Derovest works with.</h2>
+        <p class="sec-lede rv">Companies that need technology done well, without having to build a technology department to get it.</p>
+      </div>
+      <div class="aud rv" data-stagger>
+        <div class="aud-card">
+          <span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91 0z"/><path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg></span>
           <h3>Startups</h3>
           <p>You need something real in front of users, built by people who will tell you what not to build.</p>
           <ul>
-            <li>MVP development</li>
-            <li>Software engineering without a full team</li>
-            <li>Cost-conscious, practical builds</li>
+            <li>MVP and product engineering</li>
+            <li>Software without a full in-house team</li>
+            <li>Additional development capacity</li>
             <li>Technology talent as you grow</li>
           </ul>
         </div>
-        <div class="who-card">
-          <h3>Non-technology businesses</h3>
-          <p>You run on spreadsheets, email and manual steps. You do not want an IT department — you want the repetition gone.</p>
+        <div class="aud-card">
+          <span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 21v-6h6v6"/><path d="M9 10h.01M15 10h.01"/></svg></span>
+          <h3>Growing businesses</h3>
+          <p>You run on spreadsheets, email and manual steps. You don't want an IT department — you want the repetition gone.</p>
           <ul>
             <li>Business and workflow automation</li>
             <li>Internal software built around your process</li>
-            <li>Reporting that does not need rebuilding</li>
-            <li>Fewer repetitive administrative tasks</li>
+            <li>Reporting that doesn't need rebuilding</li>
+            <li>Systems that finally talk to each other</li>
+          </ul>
+        </div>
+        <div class="aud-card">
+          <span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 18l6-6-6-6"/><path d="M8 6l-6 6 6 6"/><path d="M13.5 4l-3 16"/></svg></span>
+          <h3>Technology teams</h3>
+          <p>You already build things. You need more capacity, modernisation, or people you can trust to assess technical talent.</p>
+          <ul>
+            <li>Contract developers and specialists</li>
+            <li>Technical screening support when hiring</li>
+            <li>Modernisation and maintenance</li>
+            <li>Infrastructure and cost improvement</li>
           </ul>
         </div>
       </div>
@@ -856,106 +1064,203 @@
   </div>
 </section>
 
-<!-- ══ §07 CONTACT ════════════════════════════════════════ -->
-<section class="band rule" id="contact">
+<!-- ══ §07 ENGAGEMENT MODELS ═══════════════════════════════════════════ -->
+<section class="band rule" id="engagements">
   <div class="wrap spine">
-    <div class="gutter"><div class="stick"><span class="tick"></span><span class="code-label">§07<br>Start</span></div></div>
-    <div class="contact">
-      <div>
-        <h2 class="rv">Tell us what you need<br>help with.</h2>
-        <p class="sec-lede rv">Software, technology people, or a process that eats your team&#39;s week. One line is enough to start — you&#39;ll get a real reply from someone who can answer it.</p>
-        <div class="direct rv">
-          <a class="reveal" data-reveal="wa" href="#contact" aria-label="Show WhatsApp number" title="Show WhatsApp number">
-            <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20zm4.4-5.8c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.5.1l-.7.9c-.1.2-.3.2-.5.1a6.6 6.6 0 0 1-3.2-2.8c-.2-.4.2-.4.6-1.2.1-.1 0-.3 0-.4l-.7-1.7c-.2-.4-.4-.4-.5-.4h-.5a1 1 0 0 0-.7.3A2.9 2.9 0 0 0 7 8.4c0 1.3.9 2.5 1 2.7a10.4 10.4 0 0 0 4 3.5c1.4.6 2 .6 2.7.5a2.5 2.5 0 0 0 1.6-1.2c.2-.4.2-.8.1-.9z"/></svg>
-            <span class="txt"><span><span class="k">WhatsApp</span><br><span class="v"></span></span></span>
-          </a>
-          <a class="reveal" data-reveal="mail" href="#contact" aria-label="Show email address" title="Show email address">
-            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>
-            <span class="txt"><span><span class="k">Email</span><br><span class="v"></span></span></span>
-          </a>
-          <span class="hint">tap to reveal</span>
+    <div class="gutter-col"><div class="stick"><span class="tick"></span><span class="code-label">§07<br>Engagement</span></div></div>
+    <div>
+      <div class="band-head">
+        <h2 class="rv">Three ways to work with us.</h2>
+        <p class="sec-lede rv">Whichever shape fits. Nothing starts until the scope and the price are written down and agreed.</p>
+      </div>
+      <div class="models rv" data-stagger>
+        <div class="model">
+          <span class="k">Model 01</span>
+          <h3>Project</h3>
+          <p>Defined scope, defined delivery. You know what you're getting and what it costs before we begin.</p>
+          <ul>
+            <li>Written scope, price and dates</li>
+            <li>Built in visible increments</li>
+            <li>Code and accounts in your name</li>
+          </ul>
+          <div class="foot">Best when the requirement is already clear</div>
+        </div>
+        <div class="model lead">
+          <span class="k">Model 02</span>
+          <h3>Monthly technology partner</h3>
+          <p>Continuous development, maintenance and improvement — the technology side of the business, handled.</p>
+          <ul>
+            <li>Ongoing development and enhancement</li>
+            <li>Maintenance of what you already own</li>
+            <li>Automation and infrastructure work as it comes up</li>
+          </ul>
+          <div class="foot">Best when the work doesn't end at launch</div>
+        </div>
+        <div class="model">
+          <span class="k">Model 03</span>
+          <h3>Dedicated capacity</h3>
+          <p>Developer or team capacity sized to your requirement, working alongside your own people.</p>
+          <ul>
+            <li>Contract professionals for a defined period</li>
+            <li>Technically screened before they reach you</li>
+            <li>Scaled to the requirement, not to a minimum</li>
+          </ul>
+          <div class="foot">Best when you need hands, not a supplier</div>
         </div>
       </div>
-      <form id="brief" class="rv" novalidate>
-        <div class="field-row">
-          <div class="field">
-            <label for="f-name">Your name</label>
-            <input id="f-name" name="name" type="text" autocomplete="name" placeholder="Priya Raman" required>
-          </div>
-          <div class="field">
-            <label for="f-company">Company</label>
-            <input id="f-company" name="company" type="text" autocomplete="organization" placeholder="Acme Logistics">
-          </div>
+      <div class="close-cta rv">
+        <div>
+          <h2>Not sure which one you need?</h2>
+          <p>Describe the problem rather than the solution. A short conversation is usually enough to work out whether it's a software job, a staffing job, or an automation job.</p>
+        </div>
+        <a class="btn btn-primary" href="/contact">Discuss your requirement <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ §08 CREDIBILITY ═════════════════════════════════════════════════ -->
+<section class="band rule" id="why">
+  <div class="wrap spine">
+    <div class="gutter-col"><div class="stick"><span class="tick"></span><span class="code-label">§08<br>Why us</span></div></div>
+    <div>
+      <div class="band-head">
+        <h2 class="rv">We build products too.</h2>
+        <p class="sec-lede rv">Derovest is an early-stage company, and we'd rather say that than invent a customer list. What we can point at is the work: we run Mentivax and PORTVAX ourselves, which means we face the same decisions you're asking us about.</p>
+      </div>
+      <div class="cred">
+        <ul class="cred-list rv" data-stagger>
+          <li><span class="ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><b>Architecture decisions</b><span>We make them for our own products first, and live with them.</span></span></li>
+          <li><span class="ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><b>Deployment and uptime</b><span>Our own products are the thing that breaks at two in the morning.</span></span></li>
+          <li><span class="ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><b>Real user feedback</b><span>Schools and traders, not requirements documents.</span></span></li>
+          <li><span class="ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><b>Running costs</b><span>We pay our own infrastructure bill, which is why we know where it leaks.</span></span></li>
+          <li><span class="ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><b>Product trade-offs</b><span>What to build, what to leave out, and saying which is which.</span></span></li>
+        </ul>
+        <div class="prose rv">
+          <p class="h3">What that gets you</p>
+          <p>A supplier only ever bills for the building. We make the same trade-offs you do, so the advice you get is the advice we'd give ourselves — including <b>“don't build that yet”</b>, which is not a thing an agency is usually incentivised to say.</p>
+          <p>We don't publish customer counts, logos or testimonials we haven't earned. When there is real work we're allowed to show, it will appear here.</p>
+          <a class="more" href="/about">More about how we think <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FINAL CTA ═══════════════════════════════════════════════════════ -->
+<section class="band cta-band" id="contact">
+  <div class="wrap cta-in">
+    <div>
+      <span class="kicker">Start here</span>
+      <h2 class="rv" style="margin-top:20px">What is slowing your business down?</h2>
+      <div class="cta-lines rv">
+        <span><b>Software</b> you need built.</span>
+        <span>A <b>workflow</b> you want automated.</span>
+        <span><b>Technology capacity</b> you need added.</span>
+        <span>A <b>bill</b> that keeps growing on its own.</span>
+      </div>
+      <p class="sec-lede rv">Start with the problem. One line is enough — you'll get a real reply from someone who can answer it.</p>
+      <div class="cta-row rv">
+        <a class="btn btn-primary btn-lg magnetic" href="#brief">Talk to Derovest <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+      <div class="direct rv">
+        <a class="reveal" data-reveal="wa" href="#contact" aria-label="Show WhatsApp number" title="Show WhatsApp number">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20zm4.4-5.8c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.5.1l-.7.9c-.1.2-.3.2-.5.1a6.6 6.6 0 0 1-3.2-2.8c-.2-.4.2-.4.6-1.2.1-.1 0-.3 0-.4l-.7-1.7c-.2-.4-.4-.4-.5-.4h-.5a1 1 0 0 0-.7.3A2.9 2.9 0 0 0 7 8.4c0 1.3.9 2.5 1 2.7a10.4 10.4 0 0 0 4 3.5c1.4.6 2 .6 2.7.5a2.5 2.5 0 0 0 1.6-1.2c.2-.4.2-.8.1-.9z"/></svg>
+          <span class="txt"><span><span class="k">WhatsApp</span><br><span class="v"></span></span></span>
+        </a>
+        <a class="reveal" data-reveal="mail" href="#contact" aria-label="Show email address" title="Show email address">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>
+          <span class="txt"><span><span class="k">Email</span><br><span class="v"></span></span></span>
+        </a>
+        <span class="hint">tap to reveal</span>
+      </div>
+    </div>
+
+    <form id="brief" class="form-card rv" novalidate>
+      <div class="form-head"><b>Tell us what you need</b><span class="tag">2 minutes</span></div>
+      <div class="field-row">
+        <div class="field">
+          <label for="f-name">Name</label>
+          <input id="f-name" name="name" type="text" autocomplete="name" placeholder="Priya Raman" required>
         </div>
         <div class="field">
-          <label for="f-email">Email</label>
+          <label for="f-email">Business email</label>
           <input id="f-email" name="email" type="email" autocomplete="email" placeholder="priya@acme.com">
         </div>
-        <div class="field">
-          <label for="f-need">I&#39;m interested in</label>
-          <select id="f-need" name="need">
-            <option>Software development</option>
-            <option>Technology staffing</option>
-            <option>Business automation</option>
-            <option>SEO optimisation</option>
-            <option>Server cost reduction</option>
-            <option>Derovest products</option>
-            <option>Other</option>
-          </select>
-        </div>
-        <div class="field">
-          <label for="f-msg">What do you need help with</label>
-          <textarea id="f-msg" name="message" placeholder="We need two backend developers for a six-month project. Or: three people spend most of Monday copying orders into a spreadsheet."></textarea>
-        </div>
-        <div class="form-actions">
-          <button class="btn btn-primary" type="submit">Send on WhatsApp <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
-          <button class="btn btn-ghost" type="button" id="send-mail">Send by email</button>
-        </div>
-        <p class="form-note" id="form-note">Nothing is stored here — this opens your own app with the message written.</p>
-      </form>
-    </div>
+      </div>
+      <div class="field">
+        <label for="f-company">Company</label>
+        <input id="f-company" name="company" type="text" autocomplete="organization" placeholder="Acme Logistics">
+      </div>
+      <div class="field">
+        <label for="f-need">What do you need help with?</label>
+        <select id="f-need" name="need">
+          <option>Software development</option>
+          <option>Business automation</option>
+          <option>Technology staffing</option>
+          <option>Cloud &amp; cost optimisation</option>
+          <option>SEO optimisation</option>
+          <option>Derovest products</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="f-msg">Message</label>
+        <textarea id="f-msg" name="message" placeholder="We need two backend developers for a six-month project. Or: three people spend most of Monday copying orders into a spreadsheet."></textarea>
+      </div>
+      <div class="form-actions">
+        <button class="btn btn-primary" type="submit">Send on WhatsApp <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        <button class="btn btn-ghost" type="button" id="send-mail">Send by email</button>
+      </div>
+      <p class="form-note" id="form-note">Nothing is stored here — this opens your own app with the message written.</p>
+    </form>
   </div>
 </section>
 
 </main>
-<footer>
+<footer class="foot">
   <div class="wrap foot-in">
-    <div class="col foot-brand">
-      <a class="brand" href="/" aria-label="Derovest — home"><img class="mark" src="/assets/logo.png" alt="" width="208" height="190" decoding="async"><b>DEROVEST</b></a>
-      <p>Building technology. Delivering solutions. We build our own products, and we help other businesses build software, hire technology talent, and automate repetitive work.</p>
+    <div class="foot-col foot-brand">
+      <a class="brand" href="/" aria-label="Derovest — home"><img class="mark" src="/assets/logo.png" alt="" width="208" height="190" loading="lazy" decoding="async"><b>DEROVEST</b></a>
+      <p>Products. Software. Automation. We build our own technology products, and we help other businesses build software, automate repetitive work and extend their technology teams.</p>
+      <div class="foot-social">
+        <a href="https://www.linkedin.com/company/derovest" rel="me noopener" target="_blank" aria-label="Derovest on LinkedIn" title="LinkedIn"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-.95 1.83-1.95 3.77-1.95 4.03 0 4.78 2.5 4.78 5.75V21h-4v-5.6c0-1.34-.03-3.07-1.9-3.07-1.9 0-2.2 1.46-2.2 2.97V21H9z"/></svg></a>
+        <a href="https://www.instagram.com/derovest.in" rel="me noopener" target="_blank" aria-label="Derovest on Instagram" title="Instagram"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg></a>
+        <a href="https://github.com/derovest" rel="me noopener" target="_blank" aria-label="Derovest on GitHub" title="GitHub"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48l-.01-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.9 1.53 2.36 1.09 2.94.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02a9.5 9.5 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85l-.01 2.75c0 .27.18.58.69.48A10 10 0 0 0 12 2z"/></svg></a>
+      </div>
     </div>
-    <nav class="col" aria-label="Products">
+    <nav class="foot-col" aria-label="Products">
       <span class="code-label">Products</span>
       <a href="/products">All products</a>
       <a href="/products/mentivax">Mentivax</a>
       <a href="/products/portvax">PORTVAX</a>
     </nav>
-    <nav class="col" aria-label="Services">
+    <nav class="foot-col" aria-label="Services">
       <span class="code-label">Services</span>
       <a href="/services">All services</a>
       <a href="/services/software-development">Software Development</a>
-      <a href="/services/technology-staffing">Technology Staffing</a>
       <a href="/services/business-automation">Business Automation</a>
+      <a href="/services/technology-staffing">Technology Staffing</a>
+      <a href="/services/server-cost-reduction">Cloud &amp; Cost Optimisation</a>
       <a href="/services/seo">SEO Optimisation</a>
-      <a href="/services/server-cost-reduction">Server Cost Reduction</a>
     </nav>
-    <nav class="col" aria-label="Company">
+    <div class="foot-col">
       <span class="code-label">Company</span>
       <a href="/about">About</a>
+      <a href="/services#how-we-work">How we work</a>
       <a href="/faq">FAQ</a>
       <a href="/contact">Contact</a>
-    </nav>
-    <nav class="col" aria-label="Elsewhere">
-      <span class="code-label">Elsewhere</span>
-      <a href="https://www.linkedin.com/company/derovest" rel="me noopener" target="_blank">LinkedIn</a>
-      <a href="https://www.instagram.com/derovest.in" rel="me noopener" target="_blank">Instagram</a>
-      <a href="https://github.com/derovest" rel="me noopener" target="_blank">GitHub</a>
-      <a href="https://www.crunchbase.com/organization/derovest" rel="me noopener" target="_blank">Crunchbase</a>
-    </nav>
+      <div class="foot-contact">
+        <span class="code-label" style="margin-bottom:6px">Get in touch</span>
+        <a href="/contact">hello@derovest.com</a>
+        <span>Anthiyur, Erode<br>Tamil Nadu 638501, India</span>
+        <span>Working remotely, worldwide</span>
+      </div>
+    </div>
   </div>
   <div class="wrap foot-bottom">
     <span>© <span id="year">2026</span> Derovest</span>
-    <span>Building technology. Delivering solutions.</span>
+    <span class="sep">Products. Software. Automation.</span>
   </div>
 </footer>
 </body>
