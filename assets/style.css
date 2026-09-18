@@ -54,10 +54,13 @@
   /* ink on ground */
   /* ink-3 and ink-4 are deliberately light for muted text: both clear 4.5:1
      against every surface they are used on, including the deepest panel. */
-  --ink:#EDF2FF;  --ink-2:#A6B4D6;  --ink-3:#98A4C4;  --ink-4:#7C89B0;
+  --ink:#EDF2FF;  --ink-2:#A6B4D6;  --ink-3:#98A4C4;  --ink-4:#8994B8;
 
   /* technology blue */
   --blue:#4C8DFF;  --blue-2:#2F6BF0;  --blue-3:#1B49C9;
+  /* blue as TEXT: lighter, so it clears 4.5:1 over the lit background.
+     --blue stays the brand value for fills, strokes and borders. */
+  --blue-ink:#74A7FF;
   --blue-soft:#4C8DFF14;  --blue-line:#4C8DFF3D;  --blue-glow:#2F6BF055;
   --blue-grad:linear-gradient(135deg,#4C8DFF,#1B49C9);
 
@@ -97,13 +100,12 @@
 
 /* ═══ 3. RESET ═════════════════════════════════════════════════════════ */
 *,*::before,*::after{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%; scroll-padding-top:96px}
+html{-webkit-text-size-adjust:100%; scroll-padding-top:96px; overflow-x:clip}
 body{
   margin:0; background:var(--bg); color:var(--ink);
   font-family:"Manrope","Helvetica Neue",Arial,sans-serif;
   font-size:17px; line-height:1.62; letter-spacing:-.005em;
   -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
-  overflow-x:clip;
 }
 h1,h2,h3,h4{
   font-family:"Archivo","Helvetica Neue",Arial,sans-serif;
@@ -174,6 +176,7 @@ h3{font-size:clamp(19px,1.5vw,23px); font-weight:700; letter-spacing:-.025em}
   --line:var(--paper-line); --line-2:#CBD5EC; --panel:var(--paper-2); --panel-2:var(--paper-3);
   --hair:#0A143A0F; --shadow:var(--shadow-paper); --grid-line:#0A143A08;
   --blue-soft:#2F6BF00F; --blue-line:#2F6BF033; --blue:#1B49C9; --blue-2:#1B49C9;
+  --blue-ink:#1B49C9;
   color-scheme:light;
 }
 .band-paper .code-label,.band-paper .kicker{color:var(--paper-ink-3)}
@@ -226,7 +229,7 @@ h3{font-size:clamp(19px,1.5vw,23px); font-weight:700; letter-spacing:-.025em}
 /* — inline forward link — */
 .more{
   display:inline-flex; align-items:center; gap:9px; text-decoration:none;
-  font-weight:700; font-size:15px; color:var(--blue); width:fit-content;
+  font-weight:700; font-size:15px; color:var(--blue-ink); width:fit-content;
 }
 .more svg{transition:transform var(--t) var(--ease)}
 .more:hover svg{transform:translateX(4px)}
@@ -240,7 +243,7 @@ h3{font-size:clamp(19px,1.5vw,23px); font-weight:700; letter-spacing:-.025em}
 }
 .tag.good{color:var(--good); border-color:#4ADE9B4D; background:var(--good-soft)}
 .tag.bad{color:var(--bad); border-color:#F08A804D; background:var(--bad-soft)}
-.tag.blue{color:var(--blue); border-color:var(--blue-line); background:var(--blue-soft)}
+.tag.blue{color:var(--blue-ink); border-color:var(--blue-line); background:var(--blue-soft)}
 .tag.gold{color:var(--gold); border-color:var(--gold-line); background:var(--gold-soft)}
 /* an inline status marker — PORTVAX is in beta, so it is labelled wherever
    it is listed beside a product that is already running */
@@ -354,7 +357,7 @@ body{padding-top:74px}
 .mega-link:hover{background:#FFFFFF0A}
 .mega-link .ic{
   width:38px; height:38px; border-radius:11px; display:grid; place-items:center; flex:none;
-  background:var(--blue-soft); border:1px solid var(--blue-line); color:var(--blue);
+  background:var(--blue-soft); border:1px solid var(--blue-line); color:var(--blue-ink);
   font-family:"Archivo",sans-serif; font-weight:800; font-size:15px;
   transition:background var(--t) ease, border-color var(--t) ease;
 }
@@ -404,7 +407,7 @@ body{padding-top:74px}
     border-bottom:1px solid var(--line);
   }
   .nav-links a[aria-current="page"]::after{left:4px; right:auto; width:22px; bottom:8px}
-  .nav-item > a svg{margin-left:auto; color:var(--blue)}
+  .nav-item > a svg{margin-left:auto; color:var(--blue-ink)}
   .nav-item{display:flex; flex-direction:column}
   .mega{
     position:static; transform:none; opacity:1; visibility:visible; pointer-events:auto;
@@ -424,7 +427,7 @@ body{padding-top:74px}
   }
   .nav-mob-meta a{font-family:"JetBrains Mono",monospace; font-size:11.5px; letter-spacing:.1em;
     text-transform:uppercase; color:var(--ink-3); text-decoration:none}
-  .nav-mob-meta a:hover{color:var(--blue)}
+  .nav-mob-meta a:hover{color:var(--blue-ink)}
 }
 @media (min-width:1061px){ .nav-mob-cta,.nav-mob-meta{display:none} }
 @media (max-width:420px){ :root{--gutter:18px} }
@@ -469,18 +472,18 @@ body{padding-top:74px}
   border:1px solid var(--line); background:#FFFFFF06; color:var(--ink-3);
   transition:color var(--t) ease, border-color var(--t) ease, background var(--t) ease, transform var(--t) var(--ease);
 }
-.foot-social a:hover{color:var(--blue); border-color:var(--blue-line); background:var(--blue-soft); transform:translateY(-2px)}
+.foot-social a:hover{color:var(--blue-ink); border-color:var(--blue-line); background:var(--blue-soft); transform:translateY(-2px)}
 .foot-col{display:flex; flex-direction:column; gap:11px; min-width:0}
 .foot-col .code-label{margin-bottom:3px}
 .foot-col a{text-decoration:none; color:var(--ink-2); font-size:14.5px; width:fit-content;
   transition:color var(--t-fast) ease}
-.foot-col a:hover{color:var(--blue)}
+.foot-col a:hover{color:var(--blue-ink)}
 .foot-contact{
   display:flex; flex-direction:column; gap:6px; margin-top:24px;
   font-size:14px; color:var(--ink-3); line-height:1.6;
 }
 .foot-contact a{color:var(--ink-2); text-decoration:none}
-.foot-contact a:hover{color:var(--blue)}
+.foot-contact a:hover{color:var(--blue-ink)}
 .foot-bottom{
   position:relative; border-top:1px solid var(--line); padding-block:20px;
   display:flex; flex-wrap:wrap; gap:10px 20px; align-items:center;
@@ -540,7 +543,7 @@ body{padding-top:74px}
   display:inline-flex; align-items:center; gap:9px;
   font-size:13.5px; color:var(--ink-3); line-height:1.4;
 }
-.hero-proof svg{color:var(--blue); flex:none}
+.hero-proof svg{color:var(--blue-ink); flex:none}
 
 /* ── the branch diagram ────────────────────────────────────────────────
    Origin mark → four branches. Plain SVG in the document, animated with
@@ -625,7 +628,7 @@ body{padding-top:74px}
   text-transform:uppercase; color:var(--ink-3);
 }
 .side-build .side-num{color:var(--gold)}
-.side-serve .side-num{color:var(--blue)}
+.side-serve .side-num{color:var(--blue-ink)}
 .side h3{font-size:clamp(23px,2.4vw,30px); font-weight:800; letter-spacing:-.032em}
 .side > p{color:var(--ink-2); font-size:15.5px; max-width:44ch}
 .side-list{list-style:none; display:flex; flex-direction:column; gap:1px;
@@ -639,14 +642,14 @@ body{padding-top:74px}
 .side-list .ic{
   width:34px; height:34px; border-radius:10px; display:grid; place-items:center;
   font-family:"Archivo",sans-serif; font-weight:800; font-size:14px; flex:none;
-  background:var(--blue-soft); border:1px solid var(--blue-line); color:var(--blue);
+  background:var(--blue-soft); border:1px solid var(--blue-line); color:var(--blue-ink);
 }
 .side-build .side-list .ic{background:var(--gold-soft); border-color:var(--gold-line); color:var(--gold)}
 .side-list b{display:block; font-size:15px; font-weight:700; letter-spacing:-.01em}
 .side-list small{display:block; margin-top:2px; font-size:12.5px; color:var(--ink-3); line-height:1.4;
   font-weight:400; letter-spacing:0}
 .side-list .arw{color:var(--ink-4); transition:transform var(--t) var(--ease), color var(--t) ease}
-.side-list a:hover .arw{color:var(--blue); transform:translateX(3px)}
+.side-list a:hover .arw{color:var(--blue-ink); transform:translateX(3px)}
 .side-build .side-list a:hover .arw{color:var(--gold)}
 .side-foot{
   display:flex; flex-wrap:wrap; align-items:center; gap:14px;
@@ -690,7 +693,7 @@ body{padding-top:74px}
 .show-copy .role{margin-top:14px; font-size:15px; color:var(--ink-3)}
 .show-copy .slogan{
   margin-top:18px; font-family:"Archivo",sans-serif; font-weight:600;
-  font-size:clamp(18px,1.8vw,23px); letter-spacing:-.025em; color:var(--blue);
+  font-size:clamp(18px,1.8vw,23px); letter-spacing:-.025em; color:var(--blue-ink);
 }
 .show-copy > p{margin-top:16px; color:var(--ink-2); font-size:16.5px; max-width:48ch}
 .show-mods{display:flex; flex-wrap:wrap; gap:8px; margin-top:26px}
@@ -840,7 +843,7 @@ body{padding-top:74px}
   font-family:"JetBrains Mono",monospace; font-size:12px; letter-spacing:.14em;
   color:var(--ink-4); transition:color var(--t) ease;
 }
-.switch-btn[aria-selected="true"] .n{color:var(--blue)}
+.switch-btn[aria-selected="true"] .n{color:var(--blue-ink)}
 .switch-btn .t{
   font-family:"Archivo",sans-serif; font-weight:700; font-size:clamp(18px,1.85vw,24px);
   letter-spacing:-.028em; color:var(--ink-3); transition:color var(--t) ease; min-width:0;
@@ -848,7 +851,7 @@ body{padding-top:74px}
 .switch-btn:hover .t{color:var(--ink-2)}
 .switch-btn[aria-selected="true"] .t{color:var(--ink)}
 .switch-btn .arw{color:var(--ink-4); opacity:0; transition:opacity var(--t) ease, transform var(--t) var(--ease)}
-.switch-btn[aria-selected="true"] .arw{opacity:1; color:var(--blue)}
+.switch-btn[aria-selected="true"] .arw{opacity:1; color:var(--blue-ink)}
 .switch-foot{margin-top:26px}
 
 .switch-stage{
@@ -872,7 +875,7 @@ body{padding-top:74px}
 .switch-panel h3{font-size:clamp(20px,1.9vw,25px); font-weight:800; letter-spacing:-.03em}
 .switch-panel .for{
   margin-top:10px; font-family:"JetBrains Mono",monospace; font-size:10.5px;
-  letter-spacing:.14em; text-transform:uppercase; color:var(--blue);
+  letter-spacing:.14em; text-transform:uppercase; color:var(--blue-ink);
 }
 .switch-panel > p{margin-top:14px; color:var(--ink-2); font-size:15.5px; max-width:52ch}
 .switch-panel .more{margin-top:22px}
@@ -889,7 +892,7 @@ body{padding-top:74px}
   text-transform:uppercase; color:var(--ink-4)}
 .dg-step .v{font-size:13.5px; font-weight:700; color:var(--ink); letter-spacing:-.01em; line-height:1.3}
 .dg-step.on{border-color:var(--blue-line); background:var(--blue-soft)}
-.dg-step.on .l{color:var(--blue)}
+.dg-step.on .l{color:var(--blue-ink)}
 .dg-step.gold{border-color:var(--gold-line); background:var(--gold-soft)}
 .dg-step.gold .l{color:var(--gold)}
 .dg-arrow{color:var(--ink-4); flex:none}
@@ -943,7 +946,7 @@ body{padding-top:74px}
   background:radial-gradient(70% 60% at 80% 0%, #4C8DFF2E, transparent 70%);
 }
 .auto-after .k{font-family:"JetBrains Mono",monospace; font-size:10.5px; letter-spacing:.18em;
-  text-transform:uppercase; color:var(--blue)}
+  text-transform:uppercase; color:var(--blue-ink)}
 .auto-after h3{margin-top:14px; font-size:clamp(22px,2.2vw,28px); font-weight:800; letter-spacing:-.03em}
 .auto-pipe{display:flex; flex-direction:column; gap:0; margin-top:22px}
 .auto-pipe .pstep{
@@ -957,7 +960,7 @@ body{padding-top:74px}
 .auto-pipe .pstep:last-child::before{display:none}
 .auto-pipe .dot{
   width:28px; height:28px; border-radius:50%; display:grid; place-items:center; flex:none;
-  background:var(--blue-soft); border:1px solid var(--blue-line); color:var(--blue);
+  background:var(--blue-soft); border:1px solid var(--blue-line); color:var(--blue-ink);
   font-family:"JetBrains Mono",monospace; font-size:11px; font-weight:700; position:relative; z-index:1;
 }
 .auto-pipe .txt b{display:block; font-size:15px; font-weight:700; letter-spacing:-.015em}
@@ -986,7 +989,7 @@ body{padding-top:74px}
   background:var(--bg); border:2px solid var(--blue); box-shadow:0 0 0 5px var(--bg);
 }
 .tl-step .n{font-family:"JetBrains Mono",monospace; font-size:10.5px; letter-spacing:.18em;
-  text-transform:uppercase; color:var(--blue)}
+  text-transform:uppercase; color:var(--blue-ink)}
 .tl-step h3{margin-top:12px; font-size:20px; font-weight:700; letter-spacing:-.025em}
 .tl-step p{margin-top:10px; color:var(--ink-2); font-size:14.5px; line-height:1.6; padding-right:10px}
 @media (max-width:900px){
@@ -1022,7 +1025,7 @@ body{padding-top:74px}
 .aud-card:hover::before{opacity:1}
 .aud-card .ic{
   width:46px; height:46px; border-radius:13px; display:grid; place-items:center;
-  border:1px solid var(--blue-line); background:var(--blue-soft); color:var(--blue);
+  border:1px solid var(--blue-line); background:var(--blue-soft); color:var(--blue-ink);
   transition:transform var(--t-slow) var(--ease);
 }
 .aud-card:hover .ic{transform:translateY(-3px)}
@@ -1031,7 +1034,7 @@ body{padding-top:74px}
 .aud-card ul{list-style:none; display:flex; flex-direction:column; gap:9px;
   margin-top:auto; padding-top:18px; border-top:1px solid var(--line)}
 .aud-card li{display:flex; gap:10px; font-size:13.5px; color:var(--ink-3); line-height:1.5}
-.aud-card li::before{content:"→"; color:var(--blue); flex:none; font-family:"JetBrains Mono",monospace}
+.aud-card li::before{content:"→"; color:var(--blue-ink); flex:none; font-family:"JetBrains Mono",monospace}
 
 
 /* ═══ 14. ENGAGEMENT MODELS ════════════════════════════════════════════ */
@@ -1047,13 +1050,13 @@ body{padding-top:74px}
 .model:hover{border-color:var(--blue-line); transform:translateY(-3px); box-shadow:var(--shadow-lift)}
 .model.lead{border-color:var(--gold-line); background:linear-gradient(170deg,#191F3C,var(--panel))}
 .model .k{font-family:"JetBrains Mono",monospace; font-size:10.5px; letter-spacing:.16em;
-  text-transform:uppercase; color:var(--blue)}
+  text-transform:uppercase; color:var(--blue-ink)}
 .model.lead .k{color:var(--gold)}
 .model h3{font-size:23px; font-weight:800; letter-spacing:-.03em}
 .model > p{color:var(--ink-2); font-size:15px}
 .model ul{list-style:none; display:flex; flex-direction:column; gap:10px; margin-top:4px}
 .model li{display:flex; gap:11px; font-size:14.5px; color:var(--ink-2); line-height:1.5}
-.model li::before{content:"→"; color:var(--blue); flex:none; font-family:"JetBrains Mono",monospace}
+.model li::before{content:"→"; color:var(--blue-ink); flex:none; font-family:"JetBrains Mono",monospace}
 .model.lead li::before{color:var(--gold)}
 .model .foot{margin-top:auto; padding-top:18px; border-top:1px solid var(--line);
   font-family:"JetBrains Mono",monospace; font-size:11.5px; color:var(--ink-4); letter-spacing:.06em}
@@ -1095,7 +1098,7 @@ body{padding-top:74px}
 .cta-in h2{font-size:clamp(32px,4.6vw,60px); letter-spacing:-.042em; line-height:.98}
 .cta-lines{display:flex; flex-direction:column; gap:10px; margin-top:26px; max-width:46ch}
 .cta-lines span{display:flex; gap:12px; font-size:16px; color:var(--ink-2); line-height:1.5}
-.cta-lines span::before{content:"→"; color:var(--blue); font-family:"JetBrains Mono",monospace; flex:none}
+.cta-lines span::before{content:"→"; color:var(--blue-ink); font-family:"JetBrains Mono",monospace; flex:none}
 .cta-lines b{color:var(--ink); font-weight:700}
 .cta-row{display:flex; flex-wrap:wrap; gap:12px; margin-top:30px}
 
@@ -1108,7 +1111,7 @@ body{padding-top:74px}
              background var(--t) ease;
 }
 .direct a:hover{border-color:var(--blue-line); background:var(--panel-2)}
-.direct svg{color:var(--blue); flex:none}
+.direct svg{color:var(--blue-ink); flex:none}
 .direct .txt{display:grid; grid-template-columns:0fr; overflow:hidden; opacity:0;
   transition:grid-template-columns .4s var(--ease), opacity .4s var(--ease)}
 .direct .txt > span{min-width:0; overflow:hidden; white-space:nowrap}
@@ -1156,7 +1159,7 @@ select{
 }
 .form-actions{display:flex; flex-wrap:wrap; gap:10px; align-items:center}
 .form-note{font-family:"JetBrains Mono",monospace; font-size:12px; color:var(--ink-4); letter-spacing:.02em; line-height:1.6}
-.form-note a{color:var(--blue); text-decoration:underline; text-underline-offset:2px}
+.form-note a{color:var(--blue-ink); text-decoration:underline; text-underline-offset:2px}
 
 
 /* ═══ 18. INNER-PAGE FURNITURE ═════════════════════════════════════════ */
@@ -1215,7 +1218,7 @@ select{
 .facts li{display:grid; grid-template-columns:auto minmax(0,1fr); gap:12px; align-items:start;
   padding:14px 18px; border-bottom:1px solid var(--line); font-size:14.5px; color:var(--ink-2); line-height:1.5}
 .facts li:last-child{border-bottom:0}
-.facts li svg{color:var(--blue); flex:none; margin-top:3px}
+.facts li svg{color:var(--blue-ink); flex:none; margin-top:3px}
 .facts li b{color:var(--ink); font-weight:700}
 
 /* — breadcrumbs — */
@@ -1225,14 +1228,14 @@ select{
 .crumbs li{display:flex; gap:8px; align-items:center}
 .crumbs li+li::before{content:"/"; color:var(--line-2)}
 .crumbs a{color:var(--ink-4); text-decoration:none; transition:color var(--t-fast) ease}
-.crumbs a:hover{color:var(--blue)}
+.crumbs a:hover{color:var(--blue-ink)}
 .crumbs [aria-current="page"]{color:var(--ink-2)}
 
 /* — prose — */
 .prose{display:flex; flex-direction:column; gap:18px; max-width:68ch}
 .prose p{color:var(--ink-2); font-size:16.5px; line-height:1.68}
 .prose b,.prose strong{color:var(--ink); font-weight:700}
-.prose a{color:var(--blue); text-decoration:underline; text-underline-offset:3px}
+.prose a{color:var(--blue-ink); text-decoration:underline; text-underline-offset:3px}
 .h3{font-family:"Archivo",sans-serif; font-weight:700; font-size:21px;
   letter-spacing:-.028em; margin:0}
 .answer{margin-top:20px; font-size:clamp(17px,1.5vw,20px); line-height:1.62; color:var(--ink-2); max-width:70ch}
@@ -1244,12 +1247,12 @@ select{
   display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.3fr); gap:clamp(20px,3vw,44px); align-items:start}
 @media (max-width:880px){.row{grid-template-columns:minmax(0,1fr); gap:16px}}
 .row .n{font-family:"JetBrains Mono",monospace; font-size:10.5px; letter-spacing:.16em;
-  text-transform:uppercase; color:var(--blue)}
+  text-transform:uppercase; color:var(--blue-ink)}
 .row h2,.row h3{margin-top:12px; font-size:clamp(22px,2.3vw,29px); font-weight:800; letter-spacing:-.032em}
 .row .side-copy p{color:var(--ink-2); font-size:15.5px; margin-bottom:16px}
 .row ul{list-style:none; display:flex; flex-direction:column; gap:11px}
 .row li{display:flex; gap:12px; font-size:15px; color:var(--ink-2); line-height:1.55}
-.row li::before{content:"→"; color:var(--blue); flex:none; font-family:"JetBrains Mono",monospace}
+.row li::before{content:"→"; color:var(--blue-ink); flex:none; font-family:"JetBrains Mono",monospace}
 
 /* — numbered vertical track — */
 .track{margin-top:clamp(32px,3.6vw,44px); border-left:1px solid var(--line)}
@@ -1259,7 +1262,7 @@ select{
   content:""; position:absolute; left:-5px; top:6px; width:9px; height:9px; border-radius:50%;
   background:var(--blue); box-shadow:0 0 0 4px var(--bg);
 }
-.track .n{font-family:"JetBrains Mono",monospace; font-size:10.5px; letter-spacing:.16em; color:var(--blue)}
+.track .n{font-family:"JetBrains Mono",monospace; font-size:10.5px; letter-spacing:.16em; color:var(--blue-ink)}
 .track h3{margin-top:10px; font-size:20px; font-weight:700; letter-spacing:-.025em}
 .track p{margin-top:9px; color:var(--ink-2); font-size:15px; max-width:64ch; line-height:1.6}
 
@@ -1275,12 +1278,12 @@ select{
   transition:background var(--t) ease}
 .card:hover{background:var(--panel-2)}
 .card .ic{width:40px; height:40px; border-radius:11px; display:grid; place-items:center;
-  border:1px solid var(--blue-line); background:var(--blue-soft); color:var(--blue); margin-bottom:4px}
+  border:1px solid var(--blue-line); background:var(--blue-soft); color:var(--blue-ink); margin-bottom:4px}
 .card h3{font-size:19px; font-weight:700; letter-spacing:-.025em}
 .card p{color:var(--ink-2); font-size:14.5px; line-height:1.6}
 .card ul{list-style:none; display:flex; flex-direction:column; gap:8px; margin-top:auto; padding-top:14px}
 .card li{display:flex; gap:9px; font-size:13.5px; color:var(--ink-3); line-height:1.5}
-.card li::before{content:"·"; color:var(--blue); flex:none}
+.card li::before{content:"·"; color:var(--blue-ink); flex:none}
 
 /* — FAQ — */
 .faq{margin-top:clamp(30px,3.4vw,42px); border-top:1px solid var(--line)}
@@ -1290,7 +1293,7 @@ summary{
   font-family:"Archivo",sans-serif; font-weight:700; font-size:clamp(17px,1.6vw,20px);
   letter-spacing:-.028em; transition:color var(--t-fast) ease;
 }
-summary:hover{color:var(--blue)}
+summary:hover{color:var(--blue-ink)}
 summary::-webkit-details-marker{display:none}
 summary::after{
   content:""; position:absolute; right:10px; top:50%; width:13px; height:13px;
@@ -1298,7 +1301,7 @@ summary::after{
   background:
     linear-gradient(currentColor,currentColor) center/13px 1.6px no-repeat,
     linear-gradient(currentColor,currentColor) center/1.6px 13px no-repeat;
-  color:var(--blue); transition:transform var(--t) var(--ease);
+  color:var(--blue-ink); transition:transform var(--t) var(--ease);
 }
 /* plus → minus. Rotating a half-turn is visually identity for the remaining
    bar, so the marker spins into place rather than snapping. */
@@ -1316,12 +1319,12 @@ details .ans{padding:0 56px 24px 0; color:var(--ink-2); font-size:15.5px; max-wi
 }
 .next a:hover{background:var(--panel-2)}
 .next .k{font-family:"JetBrains Mono",monospace; font-size:10px; letter-spacing:.16em;
-  text-transform:uppercase; color:var(--blue)}
+  text-transform:uppercase; color:var(--blue-ink)}
 .next b{font-family:"Archivo",sans-serif; font-weight:700; font-size:19px; letter-spacing:-.025em}
 .next p{color:var(--ink-3); font-size:14px; line-height:1.55}
 .next .arw{margin-top:auto; padding-top:10px; color:var(--ink-4);
   transition:transform var(--t) var(--ease), color var(--t) ease}
-.next a:hover .arw{transform:translateX(4px); color:var(--blue)}
+.next a:hover .arw{transform:translateX(4px); color:var(--blue-ink)}
 
 /* — inline closing CTA box — */
 .close-cta{
@@ -1365,7 +1368,124 @@ details .ans{padding:0 56px 24px 0; color:var(--ink-2); font-size:15.5px; max-wi
 
 
 /* ══════════════════════════════════════════════════════════════════════
-   19. MOTION
+   19. BACKGROUND SYSTEM
+   ──────────────────────────────────────────────────────────────────────
+   A flat dark page reads as cheap no matter how good the type is. Four
+   layers fix that, and none of them move:
+
+     1. canvas   a slow vertical gradient with depth at the top and a
+                 vignette at the edges, so the page has a light direction
+     2. field    a 44px grid, masked so it never ends on a hard edge
+     3. grain    200px of tiled fractal noise — this is the layer that
+                 stops large dark areas looking like flat fill
+     4. ambient  one soft light source per section, alternating side, so
+                 scrolling reads as moving past windows rather than
+                 through a tunnel
+
+   1–3 are two fixed pseudo-elements: two composited layers for the whole
+   site, painted once, never repainted on scroll. 4 is per-section and
+   also static. Nothing here animates, and every value is low-alpha —
+   this is meant to be felt, not seen.
+   ══════════════════════════════════════════════════════════════════════ */
+:root{
+  /* fractal noise, tiled. Inline so it costs no request and cannot 404. */
+  --grain:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23g)'/%3E%3C/svg%3E");
+  --grid-gap:44px;
+}
+
+/* ── 1. canvas ─────────────────────────────────────────────────────────
+   Fixed, so this is the same composition at every scroll position: it has
+   to stand on its own as a lit viewport, not as a gradient that only works
+   at the top of the page. Cool light upper-left, a warm trace upper-right
+   (the logo's gold arrow), a second cool source lower-right, and a vignette
+   so the edges fall away and the content sits forward.                  */
+body::before{
+  content:""; position:fixed; inset:0; z-index:-2; pointer-events:none;
+  background:
+    radial-gradient(64% 52% at 12% 2%,   #2A4694, transparent 62%),
+    radial-gradient(46% 36% at 92% 10%,  #6B4C18, transparent 66%),
+    radial-gradient(62% 52% at 88% 88%,  #1E3A85, transparent 64%),
+    radial-gradient(48% 40% at 2%  80%,  #1B2E6B, transparent 68%),
+    linear-gradient(180deg, #0B1436 0%, #070E24 48%, #0A1230 100%);
+  opacity:.38;
+}
+
+/* ── 2. field + vignette ───────────────────────────────────────────── */
+body::after{
+  content:""; position:fixed; inset:0; z-index:-1; pointer-events:none;
+  background:
+    /* first layer paints on top: the edges fall away so content sits forward */
+    radial-gradient(132% 112% at 50% 44%, transparent 46%, #00000038 82%, #00000073 100%),
+    linear-gradient(#FFFFFF0B 1px, transparent 1px) 0 0/100% var(--grid-gap),
+    linear-gradient(90deg, #FFFFFF0B 1px, transparent 1px) 0 0/var(--grid-gap) 100%;
+}
+
+/* ── 3. grain ──────────────────────────────────────────────────────────
+   The layer that stops large dark areas reading as flat fill. Tiled, so
+   200px of noise covers any viewport.                                   */
+html::after{
+  content:""; position:fixed; inset:0; z-index:-1; pointer-events:none;
+  background-image:var(--grain); background-size:190px 190px;
+  opacity:.07; mix-blend-mode:overlay;
+}
+
+/* ── 4. ambient, one soft source per section ───────────────────────────
+   Alternating side, with a counter-source at the opposite bottom corner,
+   so crossing a section boundary is a change in light and not only a line. */
+.band:not(.cta-band){position:relative; isolation:isolate}
+.band:not(.cta-band)::before{
+  content:""; position:absolute; inset:0; z-index:-1; pointer-events:none;
+  background:
+    radial-gradient(52% 62% at 2% -6%,    #3C6FE01B, transparent 62%),
+    radial-gradient(44% 54% at 100% 104%, #2F6BF019, transparent 66%);
+}
+.band:not(.cta-band):nth-of-type(even)::before{
+  background:
+    radial-gradient(52% 62% at 98% -6%, #3C6FE01B, transparent 62%),
+    radial-gradient(44% 54% at 0% 104%, #2F6BF019, transparent 66%);
+}
+/* the two sections that carry the brand's second colour */
+#products.band::before,#why.band::before{
+  background:
+    radial-gradient(52% 62% at 98% -6%, #C9902E1C, transparent 64%),
+    radial-gradient(44% 54% at 0% 104%, #2F6BF019, transparent 66%);
+}
+
+/* ── section rules: a hairline with a bloom under it ───────────────── */
+.band.rule:not(.cta-band){border-top:0}
+.band.rule:not(.cta-band)::after{
+  content:""; position:absolute; inset:0 0 auto 0; height:170px; z-index:-1; pointer-events:none;
+  background:
+    linear-gradient(90deg, transparent, var(--line) 12%, #4C8DFF4D 50%, var(--line) 88%, transparent)
+      0 0/100% 1px no-repeat,
+    radial-gradient(44% 100% at 50% 0%, #2F6BF016, transparent 72%);
+}
+.show-item{border-top:0; position:relative; isolation:isolate}
+.show-item::before{
+  content:""; position:absolute; inset:0 0 auto 0; height:200px; z-index:-1; pointer-events:none;
+  background:
+    linear-gradient(90deg, transparent, var(--line) 14%, #4C8DFF59 50%, var(--line) 86%, transparent)
+      0 0/100% 1px no-repeat,
+    radial-gradient(42% 100% at 50% 0%, #2F6BF012, transparent 72%);
+}
+
+/* ── paper sections: a blueprint rather than a wash ────────────────── */
+.band-paper{position:relative; overflow:hidden; isolation:isolate}
+.band-paper::before{
+  content:""; position:absolute; inset:0; z-index:-1; pointer-events:none;
+  background:
+    linear-gradient(#0A143A0A 1px, transparent 1px) 0 0/100% 28px,
+    linear-gradient(90deg, #0A143A0A 1px, transparent 1px) 0 0/28px 100%,
+    radial-gradient(60% 50% at 88% 0%, #2F6BF014, transparent 62%),
+    linear-gradient(180deg, #FFFFFF, var(--paper) 45%, #EEF2FA 100%);
+  mask-image:none;
+}
+
+/* ── the hero and the closing band keep their own, stronger treatment ─ */
+.hero,.cta-band{isolation:isolate}
+
+/* ══════════════════════════════════════════════════════════════════════
+   20. MOTION
    ──────────────────────────────────────────────────────────────────────
    Rules this section keeps to:
      · transform and opacity only — never a property that forces layout
@@ -1544,6 +1664,10 @@ details .ans{padding:0 56px 24px 0; color:var(--ink-2); font-size:15.5px; max-wi
    the infinite ones stop.                                                  */
 @media (max-width:700px){
   .hero::after,.page-hero::after{animation:none; will-change:auto}
+  /* a full-viewport blend layer is re-composited on every scroll frame;
+     the grain is the first thing worth giving up on a phone */
+  html::after{display:none}
+  body::after{background-size:auto, 100% 56px, 56px 100%}
   .branch .ring-2{animation:fadeIn 1s ease .5s both}
   .branch .spark{display:none}
   .branch .pip{animation:none; opacity:.8}
