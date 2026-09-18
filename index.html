@@ -37,7 +37,7 @@
 
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/archivo.woff2?v=de2f1fe817" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/manrope.woff2?v=938c6e8019" crossorigin>
-<link rel="stylesheet" href="/assets/style.css?v=486fae416d">
+<link rel="stylesheet" href="/assets/style.css?v=a7dde4c330">
 <noscript><style>.rv,[data-stagger]>*,.auto-task,.auto-pipe .pstep{opacity:1;transform:none}.spine .tick,.timeline::before{transform:scaleX(1)}.dg-bar{transform:scaleY(1)}.mock .equity{stroke-dashoffset:0}.mock .equity-fill{opacity:1}.switch-panels{display:block}.switch-panel{opacity:1;visibility:visible;transform:none;border-bottom:1px solid var(--line)}.switch-list{display:none}</style></noscript>
 <script src="/assets/site.js?v=5abf54484c" defer></script>
 
@@ -562,6 +562,12 @@
 
 <!-- ══ HERO — the five-second answer ═══════════════════════════════════ -->
 <section class="hero">
+  <div class="hero-bg" aria-hidden="true">
+    <span class="aurora a1"></span><span class="aurora a2"></span><span class="aurora a3"></span>
+    <span class="beam beam-h"></span><span class="beam beam-v"></span>
+    <span class="sheen"></span>
+    <span class="motes"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+  </div>
   <div class="wrap hero-in">
     <div class="hero-copy">
       <div class="eyebrow"><span class="bar"></span><span class="code-label">Derovest · Technology company</span></div>
@@ -951,10 +957,80 @@
   </div>
 </section>
 
-<!-- ══ §04 AUTOMATION STORY ════════════════════════════════════════════ -->
+<!-- ══ §04 THE STACK ═══════════════════════════════════════════════════ -->
+<section class="band rule" id="stack">
+  <div class="wrap spine">
+    <div class="gutter-col"><div class="stick"><span class="tick"></span><span class="code-label">§04<br>The stack</span></div></div>
+    <div>
+      <div class="band-head">
+        <h2 class="rv">What we build with.</h2>
+        <p class="sec-lede rv">Four layers, and only what we use day to day. You are welcome to ask a hard question about any of it.</p>
+      </div>
+
+      <div class="stack rv" data-stagger>
+        <div class="layer">
+          <span class="layer-n">Layer 01</span>
+          <h3>Interface</h3>
+          <p>What your users actually touch — on the web and on a phone.</p>
+          <div class="chips">
+            <span class="chip">React</span><span class="chip">Next.js</span>
+            <span class="chip">Vue</span><span class="chip">Nuxt</span>
+            <span class="chip">React Native</span><span class="chip">TypeScript</span>
+          </div>
+        </div>
+        <div class="layer">
+          <span class="layer-n">Layer 02</span>
+          <h3>Services &amp; APIs</h3>
+          <p>The logic behind it, and the interfaces your other systems talk to.</p>
+          <div class="chips">
+            <span class="chip">Node.js</span><span class="chip">TypeScript</span>
+            <span class="chip">Python</span><span class="chip">REST</span>
+            <span class="chip">GraphQL</span><span class="chip">Integrations</span>
+          </div>
+        </div>
+        <div class="layer">
+          <span class="layer-n">Layer 03</span>
+          <h3>Data</h3>
+          <p>Where it lives, how it is queried, and what keeps it fast.</p>
+          <div class="chips">
+            <span class="chip">PostgreSQL</span><span class="chip">MySQL</span>
+            <span class="chip">MongoDB</span><span class="chip">Redis</span>
+            <span class="chip">Schema design</span>
+          </div>
+        </div>
+        <div class="layer">
+          <span class="layer-n">Layer 04</span>
+          <h3>Cloud &amp; delivery</h3>
+          <p>How it ships, what it runs on, and how you find out when it breaks.</p>
+          <div class="chips">
+            <span class="chip">AWS</span><span class="chip">Docker</span>
+            <span class="chip">CI/CD</span><span class="chip">Monitoring</span>
+            <span class="chip">Cost control</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="marquee rv" aria-hidden="true">
+        <div class="marquee-track"><span>TypeScript</span><span>Node.js</span><span>Python</span><span>React</span><span>Next.js</span><span>Vue</span><span>Nuxt</span><span>React Native</span><span>TypeScript</span><span>Node.js</span><span>Python</span><span>React</span><span>Next.js</span><span>Vue</span><span>Nuxt</span><span>React Native</span></div>
+      </div>
+      <div class="marquee marquee-rtl rv" aria-hidden="true">
+        <div class="marquee-track"><span>PostgreSQL</span><span>MySQL</span><span>MongoDB</span><span>Redis</span><span>AWS</span><span>Docker</span><span>CI/CD</span><span>REST &amp; GraphQL</span><span>PostgreSQL</span><span>MySQL</span><span>MongoDB</span><span>Redis</span><span>AWS</span><span>Docker</span><span>CI/CD</span><span>REST &amp; GraphQL</span></div>
+      </div>
+
+      <div class="stack-note rv">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+        <p><b>This is the list we use, not the list we have heard of.</b> We would rather name six things we can defend than twenty we cannot. If your project needs something that is not here, we will tell you that instead of learning it on your budget.</p>
+      </div>
+
+      <a class="more rv" href="/services/software-development" style="margin-top:26px">How we build software <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ §05 AUTOMATION STORY ════════════════════════════════════════════ -->
 <section class="band rule" id="automation">
   <div class="wrap spine">
-    <div class="gutter-col"><div class="stick"><span class="tick"></span><span class="code-label">§04<br>Automation</span></div></div>
+    <div class="gutter-col"><div class="stick"><span class="tick"></span><span class="code-label">§05<br>Automation</span></div></div>
     <div>
       <div class="band-head">
         <h2 class="rv">Still doing this manually?</h2>
@@ -991,10 +1067,10 @@
   </div>
 </section>
 
-<!-- ══ §05 HOW WE WORK ═════════════════════════════════════════════════ -->
+<!-- ══ §06 HOW WE WORK ═════════════════════════════════════════════════ -->
 <section class="band rule" id="how">
   <div class="wrap spine">
-    <div class="gutter-col"><div class="stick"><span class="tick"></span><span class="code-label">§05<br>How we work</span></div></div>
+    <div class="gutter-col"><div class="stick"><span class="tick"></span><span class="code-label">§06<br>How we work</span></div></div>
     <div>
       <div class="band-head">
         <h2 class="rv">Four steps, and no<br>six-week discovery phase.</h2>
@@ -1017,10 +1093,10 @@
   </div>
 </section>
 
-<!-- ══ §06 WHO WE WORK WITH ════════════════════════════════════════════ -->
+<!-- ══ §07 WHO WE WORK WITH ════════════════════════════════════════════ -->
 <section class="band rule" id="who">
   <div class="wrap spine">
-    <div class="gutter-col"><div class="stick"><span class="tick"></span><span class="code-label">§06<br>Who we help</span></div></div>
+    <div class="gutter-col"><div class="stick"><span class="tick"></span><span class="code-label">§07<br>Who we help</span></div></div>
     <div>
       <div class="band-head">
         <h2 class="rv">Who Derovest works with.</h2>
@@ -1065,10 +1141,10 @@
   </div>
 </section>
 
-<!-- ══ §07 ENGAGEMENT MODELS ═══════════════════════════════════════════ -->
+<!-- ══ §08 ENGAGEMENT MODELS ═══════════════════════════════════════════ -->
 <section class="band rule" id="engagements">
   <div class="wrap spine">
-    <div class="gutter-col"><div class="stick"><span class="tick"></span><span class="code-label">§07<br>Engagement</span></div></div>
+    <div class="gutter-col"><div class="stick"><span class="tick"></span><span class="code-label">§08<br>Engagement</span></div></div>
     <div>
       <div class="band-head">
         <h2 class="rv">Three ways to work with us.</h2>
@@ -1120,10 +1196,10 @@
   </div>
 </section>
 
-<!-- ══ §08 CREDIBILITY ═════════════════════════════════════════════════ -->
+<!-- ══ §09 CREDIBILITY ═════════════════════════════════════════════════ -->
 <section class="band rule" id="why">
   <div class="wrap spine">
-    <div class="gutter-col"><div class="stick"><span class="tick"></span><span class="code-label">§08<br>Why us</span></div></div>
+    <div class="gutter-col"><div class="stick"><span class="tick"></span><span class="code-label">§09<br>Why us</span></div></div>
     <div>
       <div class="band-head">
         <h2 class="rv">We build products too.</h2>
